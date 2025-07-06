@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { Eye, EyeOff, Mail, Lock, User, Loader2 } from 'lucide-react';
 import { useAuthStore } from '../store/authStore';
+import { apiClient } from '../services/api';
 
 interface RegisterFormData {
   firstName: string;
@@ -19,7 +20,7 @@ export default function RegisterPage() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-  const { register: registerUser } = useAuthStore();
+  const { login } = useAuthStore();
 
   const {
     register,
@@ -33,15 +34,35 @@ export default function RegisterPage() {
   const onSubmit = async (data: RegisterFormData) => {
     setIsLoading(true);
     try {
-      await registerUser({
+      const response = await apiClient.register({
         firstName: data.firstName,
         lastName: data.lastName,
         email: data.email,
         password: data.password,
         role: data.role
       });
-      toast.success('Account created successfully!');
-      navigate('/dashboard');
+      
+      if (response.success && response.data) {
+        // Store tokens and user data
+        apiClient.setAuthTokens(
+          response.data.tokens.accessToken,
+          response.data.tokens.refreshToken
+        );
+        
+        // Transform user data to match frontend interface
+        const user = {
+          ...response.data.user,
+          id: response.data.user._id // Convert _id to id
+        };
+        
+        // Update auth store
+        login(user, response.data.tokens);
+        
+        toast.success('Account created successfully!');
+        navigate('/dashboard');
+      } else {
+        throw new Error(response.error || 'Registration failed');
+      }
     } catch (error) {
       toast.error(error instanceof Error ? error.message : 'Registration failed');
     } finally {

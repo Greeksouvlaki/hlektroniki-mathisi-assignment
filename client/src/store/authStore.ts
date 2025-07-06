@@ -2,19 +2,34 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 interface User {
-  _id: string;
+  id: string;
   email: string;
   firstName: string;
   lastName: string;
-  role: 'student' | 'teacher' | 'admin';
-  isActive: boolean;
-  lastLogin?: string;
+  role: 'student' | 'instructor' | 'admin';
+  profile?: {
+    avatar?: string;
+    bio?: string;
+    preferences: {
+      difficulty: 'beginner' | 'intermediate' | 'advanced';
+      learningStyle: 'visual' | 'auditory' | 'kinesthetic';
+      timeZone: string;
+    };
+  };
+  stats?: {
+    totalTimeSpent: number;
+    quizzesCompleted: number;
+    modulesCompleted: number;
+    averageScore: number;
+    streakDays: number;
+  };
+  createdAt: string;
+  updatedAt: string;
 }
 
 interface AuthTokens {
   accessToken: string;
   refreshToken: string;
-  expiresIn: number;
 }
 
 interface AuthState {

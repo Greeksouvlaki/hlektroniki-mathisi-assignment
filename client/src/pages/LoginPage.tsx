@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { Eye, EyeOff, Mail, Lock, Loader2 } from 'lucide-react';
 import { useAuthStore } from '../store/authStore';
+import { apiClient } from '../services/api';
 
 interface LoginFormData {
   email: string;
@@ -25,9 +26,32 @@ export default function LoginPage() {
   const onSubmit = async (data: LoginFormData) => {
     setIsLoading(true);
     try {
-      await login(data.email, data.password);
-      toast.success('Welcome back!');
-      navigate('/dashboard');
+      const response = await apiClient.login({
+        email: data.email,
+        password: data.password
+      });
+      
+      if (response.success && response.data) {
+        // Store tokens
+        apiClient.setAuthTokens(
+          response.data.tokens.accessToken,
+          response.data.tokens.refreshToken
+        );
+        
+        // Transform user data to match frontend interface
+        const user = {
+          ...response.data.user,
+          id: response.data.user._id // Convert _id to id
+        };
+        
+        // Update auth store
+        login(user, response.data.tokens);
+        
+        toast.success('Welcome back!');
+        navigate('/dashboard');
+      } else {
+        throw new Error(response.error || 'Login failed');
+      }
     } catch (error) {
       toast.error(error instanceof Error ? error.message : 'Login failed');
     } finally {
