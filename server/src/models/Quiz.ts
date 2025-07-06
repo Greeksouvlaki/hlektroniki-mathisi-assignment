@@ -1,5 +1,6 @@
 import mongoose, { Schema, Document } from 'mongoose';
 import { IQuiz, IQuestion } from '../types/index.js';
+import './Module.js';
 
 export interface IQuizDocument extends IQuiz, Document {}
 
@@ -118,13 +119,13 @@ const quizSchema = new Schema<IQuizDocument>(
 
 // Virtual for total points
 quizSchema.virtual('totalPoints').get(function() {
-  return this.questions.reduce((total, question) => total + question.points, 0);
+  return this.questions ? this.questions.reduce((total, question) => total + question.points, 0) : 0;
 });
 
 // Virtual for estimated duration
 quizSchema.virtual('estimatedDuration').get(function() {
   const baseTimePerQuestion = 2; // minutes
-  return this.questions.length * baseTimePerQuestion;
+  return this.questions ? this.questions.length * baseTimePerQuestion : 0;
 });
 
 // Indexes for better query performance

@@ -109,7 +109,7 @@ const moduleSchema = new Schema<IModuleDocument>(
 
 // Virtual for content count
 moduleSchema.virtual('contentCount').get(function() {
-  return this.content.length;
+  return this.get('content') ? this.get('content').length : 0;
 });
 
 // Virtual for completion rate (placeholder for future implementation)

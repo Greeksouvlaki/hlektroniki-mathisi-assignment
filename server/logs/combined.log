@@ -53,3 +53,113 @@
 2025-07-06 23:09:56:956 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
 2025-07-06 23:10:03:103 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
 2025-07-06 23:10:03:103 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:12:34:1234 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:12:34:1234 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:15:18:1518 [31merror[39m: [31mUncaught Exception: write EIO[39m
+2025-07-06 23:15:31:1531 [32minfo[39m: [32mMongoDB connected successfully[39m
+2025-07-06 23:15:31:1531 [32minfo[39m: [32mServer running on port 3000 in development mode[39m
+2025-07-06 23:15:31:1531 [32minfo[39m: [32mAPI Documentation available at http://localhost:3000/api-docs[39m
+2025-07-06 23:15:34:1534 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:15:34:1534 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:15:34:1534 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:15:34:1534 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:15:42:1542 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:15:42:1542 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:15:42:1542 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:15:42:1542 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:15:55:1555 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:15:56:1556 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:15:56:1556 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:15:56:1556 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:15:59:1559 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:15:59:1559 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:15:59:1559 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:15:59:1559 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:18:31:1831 [32minfo[39m: [32mMongoDB connected successfully[39m
+2025-07-06 23:18:31:1831 [32minfo[39m: [32mServer running on port 3000 in development mode[39m
+2025-07-06 23:18:31:1831 [32minfo[39m: [32mAPI Documentation available at http://localhost:3000/api-docs[39m
+2025-07-06 23:18:38:1838 [33mwarn[39m: [33m401 - Access token required - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:19:03:193 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:19:03:193 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:19:03:193 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:19:03:193 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:20:52:2052 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:20:52:2052 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:20:52:2052 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:20:52:2052 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:21:49:2149 [32minfo[39m: [32mMongoDB connected successfully[39m
+2025-07-06 23:21:49:2149 [32minfo[39m: [32mServer running on port 3000 in development mode[39m
+2025-07-06 23:21:49:2149 [32minfo[39m: [32mAPI Documentation available at http://localhost:3000/api-docs[39m
+2025-07-06 23:21:54:2154 [32minfo[39m: [32mMongoDB connected successfully[39m
+2025-07-06 23:21:54:2154 [32minfo[39m: [32mServer running on port 3000 in development mode[39m
+2025-07-06 23:21:54:2154 [32minfo[39m: [32mAPI Documentation available at http://localhost:3000/api-docs[39m
+2025-07-06 23:22:12:2212 [32minfo[39m: [32mMongoDB connected successfully[39m
+2025-07-06 23:22:12:2212 [32minfo[39m: [32mServer running on port 3000 in development mode[39m
+2025-07-06 23:22:12:2212 [32minfo[39m: [32mAPI Documentation available at http://localhost:3000/api-docs[39m
+2025-07-06 23:22:17:2217 [33mwarn[39m: [33m401 - Access token required - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:22:35:2235 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:22:35:2235 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:22:35:2235 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:22:35:2235 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:22:47:2247 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:22:47:2247 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:22:48:2248 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:22:48:2248 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:23:59:2359 [32minfo[39m: [32mMongoDB connected successfully[39m
+2025-07-06 23:23:59:2359 [32minfo[39m: [32mServer running on port 3000 in development mode[39m
+2025-07-06 23:23:59:2359 [32minfo[39m: [32mAPI Documentation available at http://localhost:3000/api-docs[39m
+2025-07-06 23:24:05:245 [32minfo[39m: [32mMongoDB connected successfully[39m
+2025-07-06 23:24:05:245 [32minfo[39m: [32mServer running on port 3000 in development mode[39m
+2025-07-06 23:24:05:245 [32minfo[39m: [32mAPI Documentation available at http://localhost:3000/api-docs[39m
+2025-07-06 23:24:17:2417 [32minfo[39m: [32mMongoDB connected successfully[39m
+2025-07-06 23:24:17:2417 [32minfo[39m: [32mServer running on port 3000 in development mode[39m
+2025-07-06 23:24:17:2417 [32minfo[39m: [32mAPI Documentation available at http://localhost:3000/api-docs[39m
+2025-07-06 23:24:18:2418 [32minfo[39m: [32mMongoDB connected successfully[39m
+2025-07-06 23:24:18:2418 [32minfo[39m: [32mServer running on port 3000 in development mode[39m
+2025-07-06 23:24:18:2418 [32minfo[39m: [32mAPI Documentation available at http://localhost:3000/api-docs[39m
+2025-07-06 23:25:19:2519 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:25:19:2519 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:25:19:2519 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:25:19:2519 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:28:17:2817 [32minfo[39m: [32mMongoDB connected successfully[39m
+2025-07-06 23:28:17:2817 [32minfo[39m: [32mServer running on port 3000 in development mode[39m
+2025-07-06 23:28:17:2817 [32minfo[39m: [32mAPI Documentation available at http://localhost:3000/api-docs[39m
+2025-07-06 23:28:34:2834 [33mwarn[39m: [33m401 - Invalid token - /api/modules - GET - ::1[39m
+2025-07-06 23:31:03:313 [32minfo[39m: [32mMongoDB connected successfully[39m
+2025-07-06 23:31:03:313 [32minfo[39m: [32mServer running on port 3000 in development mode[39m
+2025-07-06 23:31:03:313 [32minfo[39m: [32mAPI Documentation available at http://localhost:3000/api-docs[39m
+2025-07-06 23:31:11:3111 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:31:11:3111 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:31:11:3111 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:31:11:3111 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:32:37:3237 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:32:37:3237 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:32:37:3237 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:32:37:3237 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:32:58:3258 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:32:58:3258 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:32:58:3258 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:32:58:3258 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:33:01:331 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:33:01:331 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:33:01:331 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:33:01:331 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:33:04:334 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:33:04:334 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:33:04:334 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:33:04:334 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:33:07:337 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:33:07:337 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:33:07:337 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:33:07:337 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:33:30:3330 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:33:30:3330 [33mwarn[39m: [33m401 - Invalid token - /api/progress/stats - GET - ::1[39m
+2025-07-06 23:33:30:3330 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:33:30:3330 [33mwarn[39m: [33m401 - Invalid token - /api/adaptive/recommendations - GET - ::1[39m
+2025-07-06 23:34:48:3448 [32minfo[39m: [32mMongoDB connected successfully[39m
+2025-07-06 23:34:48:3448 [32minfo[39m: [32mServer running on port 3000 in development mode[39m
+2025-07-06 23:34:48:3448 [32minfo[39m: [32mAPI Documentation available at http://localhost:3000/api-docs[39m
+2025-07-06 23:34:50:3450 [32minfo[39m: [32mReceived SIGINT. Starting graceful shutdown...[39m
+2025-07-06 23:44:22:4422 [32minfo[39m: [32mMongoDB connected successfully[39m
+2025-07-06 23:44:22:4422 [32minfo[39m: [32mServer running on port 3000 in development mode[39m
+2025-07-06 23:44:22:4422 [32minfo[39m: [32mAPI Documentation available at http://localhost:3000/api-docs[39m

@@ -72,7 +72,7 @@ const ModulesPage = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {modules.map((module) => (
-          <div key={module._id} className="card hover:shadow-md transition-shadow">
+          <div key={module._id || module.id} className="card hover:shadow-md transition-shadow">
             <div className="card-header">
               <div className="flex items-start justify-between">
                 <h3 className="card-title">{module.title}</h3>
@@ -91,20 +91,15 @@ const ModulesPage = () => {
               <div className="space-y-3">
                 <div className="flex items-center text-sm text-gray-600">
                   <span className="mr-2">⏱️</span>
-                  {module.duration} minutes
+                  {module.estimatedDuration || module.duration || 30} minutes
                 </div>
                 
                 <div>
-                  <h4 className="text-sm font-medium text-gray-900 mb-2">Topics covered:</h4>
+                  <h4 className="text-sm font-medium text-gray-900 mb-2">Subject:</h4>
                   <div className="flex flex-wrap gap-1">
-                    {module.topics.map((topic, index) => (
-                      <span
-                        key={index}
-                        className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded"
-                      >
-                        {topic}
-                      </span>
-                    ))}
+                    <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
+                      {module.subject}
+                    </span>
                   </div>
                 </div>
 

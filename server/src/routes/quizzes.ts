@@ -88,13 +88,34 @@ router.get('/', authenticateToken, asyncHandler(async (req, res) => {
  *         description: Quiz retrieved successfully
  */
 router.get('/:id', authenticateToken, asyncHandler(async (req, res) => {
-  // TODO: Implement get quiz by ID logic
-  res.status(200).json({
-    success: true,
-    data: {},
-    message: 'Quiz retrieved successfully',
-    timestamp: new Date().toISOString()
-  });
+  try {
+    const { Quiz } = await import('../models/Quiz.js');
+    
+    const quizId = req.params.id;
+    const quiz = await Quiz.findById(quizId).lean();
+    
+    if (!quiz) {
+      return res.status(404).json({
+        success: false,
+        error: 'Quiz not found',
+        timestamp: new Date().toISOString()
+      });
+    }
+    
+    res.status(200).json({
+      success: true,
+      data: quiz,
+      message: 'Quiz retrieved successfully',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error('Error fetching quiz:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to fetch quiz',
+      timestamp: new Date().toISOString()
+    });
+  }
 }));
 
 /**
@@ -199,6 +220,122 @@ router.delete('/:id', authenticateToken, requireTeacher, asyncHandler(async (req
     message: 'Quiz deleted successfully',
     timestamp: new Date().toISOString()
   });
+}));
+
+/**
+ * @swagger
+ * /api/quizzes/{id}/submit:
+ *   post:
+ *     summary: Submit quiz answers
+ *     tags: [Quizzes]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Quiz ID
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - answers
+ *               - timeSpent
+ *             properties:
+ *               answers:
+ *                 type: array
+ *                 items:
+ *                   type: object
+ *               timeSpent:
+ *                 type: number
+ *     responses:
+ *       200:
+ *         description: Quiz submitted successfully
+ */
+router.post('/:id/submit', authenticateToken, asyncHandler(async (req, res) => {
+  try {
+    const { Quiz } = await import('../models/Quiz.js');
+    const { Progress } = await import('../models/Progress.js');
+    
+    const quizId = req.params.id;
+    const userId = req.user.id;
+    const { answers, timeSpent } = req.body;
+    
+    // Get the quiz
+    const quiz = await Quiz.findById(quizId);
+    if (!quiz) {
+      return res.status(404).json({
+        success: false,
+        error: 'Quiz not found',
+        timestamp: new Date().toISOString()
+      });
+    }
+    
+    // Calculate score
+    let correctAnswers = 0;
+    const totalQuestions = quiz.questions.length;
+    
+    quiz.questions.forEach((question, index) => {
+      if (answers[index] && answers[index].answer === question.correctAnswer) {
+        correctAnswers++;
+      }
+    });
+    
+    const score = Math.round((correctAnswers / totalQuestions) * 100);
+    
+    // Create progress record
+    const progress = new Progress({
+      userId,
+      moduleId: quiz.moduleId,
+      quizId,
+      score,
+      maxScore: 100,
+      percentage: score,
+      timeSpent,
+      completedAt: new Date(),
+      responses: answers.map((answer: any, index: number) => ({
+        questionId: quiz.questions[index]._id,
+        userAnswer: answer.answer,
+        isCorrect: answer.answer === quiz.questions[index].correctAnswer,
+        timeSpent: answer.timeSpent || 0,
+        points: answer.answer === quiz.questions[index].correctAnswer ? 10 : 0
+      })),
+      adaptiveData: {
+        difficultyLevel: score >= 80 ? 'hard' : score >= 60 ? 'medium' : 'easy',
+        masteryLevel: score / 100,
+        confidenceScore: score / 100,
+        learningPath: [`quiz-${quizId}`],
+        recommendations: score >= 80 ? ['advanced-topics'] : ['practice-more']
+      }
+    });
+    
+    await progress.save();
+    
+    res.status(200).json({
+      success: true,
+      data: {
+        score,
+        totalQuestions,
+        correctAnswers,
+        percentage: score,
+        passed: score >= quiz.passingScore
+      },
+      message: 'Quiz submitted successfully',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error('Error submitting quiz:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to submit quiz',
+      timestamp: new Date().toISOString()
+    });
+  }
 }));
 
 export default router; 

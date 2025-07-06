@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
+import { apiClient, Quiz, Question } from '../services/api';
 import { 
   ArrowLeft, 
   ArrowRight, 
@@ -11,24 +12,7 @@ import {
   Send
 } from 'lucide-react';
 
-interface Question {
-  id: string;
-  text: string;
-  type: 'multiple-choice' | 'true-false' | 'fill-blank' | 'essay';
-  options?: string[];
-  correctAnswer: string | string[];
-  explanation?: string;
-  difficulty: number;
-}
 
-interface Quiz {
-  id: string;
-  title: string;
-  description: string;
-  questions: Question[];
-  timeLimit?: number;
-  passingScore: number;
-}
 
 interface Answer {
   questionId: string;
@@ -48,47 +32,17 @@ export default function QuizPage() {
 
   useEffect(() => {
     const fetchQuiz = async () => {
+      if (!id) {
+        toast.error('Quiz ID is required');
+        navigate('/dashboard');
+        return;
+      }
+
       try {
-        // TODO: Fetch quiz from API
-        const mockQuiz: Quiz = {
-          id: id || '1',
-          title: 'JavaScript Fundamentals Quiz',
-          description: 'Test your knowledge of JavaScript basics',
-          questions: [
-            {
-              id: '1',
-              text: 'What is the correct way to declare a variable in JavaScript?',
-              type: 'multiple-choice',
-              options: [
-                'var myVariable;',
-                'let myVariable;',
-                'const myVariable;',
-                'All of the above'
-              ],
-              correctAnswer: 'All of the above',
-              difficulty: 1
-            },
-            {
-              id: '2',
-              text: 'Which method is used to add an element to the end of an array?',
-              type: 'multiple-choice',
-              options: ['push()', 'pop()', 'shift()', 'unshift()'],
-              correctAnswer: 'push()',
-              difficulty: 2
-            },
-            {
-              id: '3',
-              text: 'JavaScript is a strongly typed language.',
-              type: 'true-false',
-              options: ['True', 'False'],
-              correctAnswer: 'False',
-              difficulty: 1
-            }
-          ],
-          timeLimit: 1800, // 30 minutes
-          passingScore: 70
-        };
-        setQuiz(mockQuiz);
+        const response = await apiClient.getQuiz(id);
+        if (response.data) {
+          setQuiz(response.data);
+        }
       } catch (error) {
         toast.error('Failed to load quiz');
         navigate('/dashboard');
@@ -105,7 +59,9 @@ export default function QuizPage() {
 
     const timer = setInterval(() => {
       setTimeSpent(prev => {
-        if (prev >= quiz.timeLimit!) {
+        // Convert minutes to seconds (backend stores timeLimit in minutes)
+        const timeLimitSeconds = quiz.timeLimit! * 60;
+        if (prev >= timeLimitSeconds) {
           handleSubmit();
           return prev;
         }
@@ -116,15 +72,18 @@ export default function QuizPage() {
     return () => clearInterval(timer);
   }, [quiz?.timeLimit]);
 
-  const currentQuestion = quiz?.questions[currentQuestionIndex];
-  const totalQuestions = quiz?.questions.length || 0;
-  const answeredQuestions = answers.length;
-  const progress = (answeredQuestions / totalQuestions) * 100;
+  const currentQuestion = quiz?.questions?.[currentQuestionIndex];
+  const totalQuestions = quiz?.questions?.length || 0;
+  const answeredQuestions = answers?.length || 0;
+  const progress = totalQuestions > 0 ? (answeredQuestions / totalQuestions) * 100 : 0;
 
   const handleAnswerChange = (answer: string) => {
-    const existingAnswerIndex = answers.findIndex(a => a.questionId === currentQuestion?.id);
+    if (!currentQuestion?._id && !currentQuestion?.id) return;
+    
+    const questionId = currentQuestion._id || currentQuestion.id;
+    const existingAnswerIndex = answers.findIndex(a => a.questionId === questionId);
     const newAnswer: Answer = {
-      questionId: currentQuestion!.id,
+      questionId: questionId,
       answer,
       timeSpent: 0 // TODO: Track individual question time
     };
@@ -139,7 +98,9 @@ export default function QuizPage() {
   };
 
   const getCurrentAnswer = () => {
-    return answers.find(a => a.questionId === currentQuestion?.id)?.answer || '';
+    if (!currentQuestion?._id && !currentQuestion?.id) return '';
+    const questionId = currentQuestion._id || currentQuestion.id;
+    return answers.find(a => a.questionId === questionId)?.answer || '';
   };
 
   const handleNext = () => {
@@ -162,11 +123,21 @@ export default function QuizPage() {
       if (!confirmed) return;
     }
 
+    if (!quiz) return;
+
     setIsSubmitting(true);
     try {
-      // TODO: Submit answers to API
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Mock API call
-      toast.success('Quiz submitted successfully!');
+      const submissionData = {
+        quizId: quiz._id || quiz.id,
+        answers: answers,
+        timeSpent: timeSpent
+      };
+      
+      const response = await apiClient.submitQuiz(submissionData);
+      if (response.data) {
+        const { score, passed } = response.data;
+        toast.success(`Quiz submitted! Score: ${score}% - ${passed ? 'Passed!' : 'Try again!'}`);
+      }
       navigate('/dashboard');
     } catch (error) {
       toast.error('Failed to submit quiz');
@@ -183,7 +154,9 @@ export default function QuizPage() {
 
   const getTimeRemaining = (): string => {
     if (!quiz?.timeLimit) return '';
-    const remaining = quiz.timeLimit - timeSpent;
+    // Convert minutes to seconds (backend stores timeLimit in minutes)
+    const timeLimitSeconds = quiz.timeLimit * 60;
+    const remaining = timeLimitSeconds - timeSpent;
     return formatTime(Math.max(0, remaining));
   };
 
@@ -202,6 +175,18 @@ export default function QuizPage() {
           <AlertCircle className="h-12 w-12 text-red-500 mx-auto mb-4" />
           <h2 className="text-xl font-semibold text-gray-900">Quiz not found</h2>
           <p className="text-gray-600 mt-2">The quiz you're looking for doesn't exist.</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!quiz.questions || quiz.questions.length === 0) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="text-center">
+          <AlertCircle className="h-12 w-12 text-red-500 mx-auto mb-4" />
+          <h2 className="text-xl font-semibold text-gray-900">No questions available</h2>
+          <p className="text-gray-600 mt-2">This quiz doesn't have any questions yet.</p>
         </div>
       </div>
     );
@@ -263,7 +248,7 @@ export default function QuizPage() {
                   >
                     <input
                       type="radio"
-                      name={`question-${currentQuestion.id}`}
+                      name={`question-${currentQuestion._id || currentQuestion.id}`}
                       value={option}
                       checked={getCurrentAnswer() === option}
                       onChange={(e) => handleAnswerChange(e.target.value)}

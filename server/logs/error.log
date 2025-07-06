@@ -8,3 +8,5 @@
 2025-07-06 23:00:08:08 [31merror[39m: [31mUncaught Exception: listen EADDRINUSE: address already in use :::3000[39m
 2025-07-06 23:00:15:015 [31merror[39m: [31mUncaught Exception: listen EADDRINUSE: address already in use :::3000[39m
 2025-07-06 23:03:43:343 [31merror[39m: [31mUncaught Exception: listen EADDRINUSE: address already in use :::3000[39m
+2025-07-06 23:15:18:1518 [31merror[39m: [31mUncaught Exception: write EIO[39m
+2025-07-06 23:34:50:3450 [31merror[39m: [31mUnhandled Promise Rejection: Connection.prototype.close() no longer accepts a callback[39m

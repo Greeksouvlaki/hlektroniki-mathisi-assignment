@@ -1,6 +1,8 @@
 import { Router } from 'express';
 import { authenticateToken } from '../middleware/auth.js';
 import { asyncHandler } from '../middleware/errorHandler.js';
+import '../models/Quiz.js';
+import '../models/Module.js';
 
 const router = Router();
 
@@ -24,14 +26,16 @@ router.get('/recommendations', authenticateToken, asyncHandler(async (req, res) 
     // For now, return a mix of quizzes and modules
     // In a real implementation, this would use ML algorithms
     const quizzes = await Quiz.find({ isActive: true })
-      .select('title description difficulty subject')
+      .select('title description difficulty subject moduleId createdBy')
       .limit(3)
-      .sort({ createdAt: -1 });
+      .sort({ createdAt: -1 })
+      .lean();
     
     const modules = await Module.find({ isActive: true })
       .select('title description difficulty subject')
       .limit(3)
-      .sort({ createdAt: -1 });
+      .sort({ createdAt: -1 })
+      .lean();
     
     // Combine and shuffle recommendations
     const recommendations = [...quizzes, ...modules];

@@ -1,6 +1,9 @@
 import { Router } from 'express';
 import { authenticateToken } from '../middleware/auth.js';
 import { asyncHandler } from '../middleware/errorHandler.js';
+import '../models/Progress.js';
+import '../models/Quiz.js';
+import '../models/Module.js';
 
 const router = Router();
 
@@ -47,13 +50,13 @@ router.get('/stats', authenticateToken, asyncHandler(async (req, res) => {
     
     // Calculate statistics
     const totalTimeSpent = userProgress.reduce((sum, progress) => sum + (progress.timeSpent || 0), 0);
-    const quizzesCompleted = userProgress.filter(p => p.type === 'quiz' && p.status === 'completed').length;
-    const modulesCompleted = userProgress.filter(p => p.type === 'module' && p.status === 'completed').length;
+    const quizzesCompleted = userProgress.filter(p => p.quizId).length;
+    const modulesCompleted = userProgress.filter(p => p.moduleId && !p.quizId).length;
     
     // Calculate average score from completed quizzes
-    const completedQuizzes = userProgress.filter(p => p.type === 'quiz' && p.status === 'completed' && p.score !== undefined);
+    const completedQuizzes = userProgress.filter(p => p.quizId && p.percentage !== undefined);
     const averageScore = completedQuizzes.length > 0 
-      ? Math.round(completedQuizzes.reduce((sum, p) => sum + (p.score || 0), 0) / completedQuizzes.length)
+      ? Math.round(completedQuizzes.reduce((sum, p) => sum + (p.percentage || 0), 0) / completedQuizzes.length)
       : 0;
     
     // Calculate current streak (simplified - in real app would check consecutive days)
@@ -61,7 +64,7 @@ router.get('/stats', authenticateToken, asyncHandler(async (req, res) => {
     
     // Get recent activity
     const recentActivity = userProgress
-      .sort((a, b) => new Date(b.lastAttemptAt).getTime() - new Date(a.lastAttemptAt).getTime())
+      .sort((a, b) => new Date(b.completedAt).getTime() - new Date(a.completedAt).getTime())
       .slice(0, 5);
     
     res.status(200).json({

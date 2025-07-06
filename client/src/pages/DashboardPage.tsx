@@ -11,6 +11,7 @@ import {
   BarChart3
 } from 'lucide-react';
 import { useAuthStore } from '../store/authStore';
+import { apiClient } from '../services/api';
 
 interface ProgressStats {
   totalModules: number;
@@ -50,37 +51,34 @@ export default function DashboardPage() {
     const fetchDashboardData = async () => {
       try {
         // Fetch real stats from API
-        const statsResponse = await fetch('/api/progress/stats', {
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            'Content-Type': 'application/json'
-          }
-        });
+        const statsResponse = await apiClient.getProgressAnalytics();
         
-        if (statsResponse.ok) {
-          const statsData = await statsResponse.json();
+        if (statsResponse.data) {
           setStats({
             totalModules: 12, // TODO: Get from modules API
-            completedModules: statsData.data.modulesCompleted || 0,
+            completedModules: statsResponse.data.completedModules || 0,
             totalQuizzes: 24, // TODO: Get from quizzes API
-            completedQuizzes: statsData.data.quizzesCompleted || 0,
-            averageScore: statsData.data.averageScore || 0,
-            totalTimeSpent: statsData.data.totalTimeSpent || 0,
-            currentStreak: statsData.data.streakDays || 0
+            completedQuizzes: statsResponse.data.completedQuizzes || 0,
+            averageScore: statsResponse.data.averageScore || 0,
+            totalTimeSpent: statsResponse.data.totalTimeSpent || 0,
+            currentStreak: statsResponse.data.currentStreak || 0
           });
         }
 
         // Fetch recommendations from API
-        const recommendationsResponse = await fetch('/api/adaptive/recommendations', {
-          headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
-            'Content-Type': 'application/json'
-          }
-        });
+        const recommendationsResponse = await apiClient.getRecommendations();
         
-        if (recommendationsResponse.ok) {
-          const recommendationsData = await recommendationsResponse.json();
-          setRecommendations(recommendationsData.data || []);
+        if (recommendationsResponse.data) {
+          const transformedRecommendations = recommendationsResponse.data.map((item: any) => ({
+            id: item._id || item.id,
+            title: item.title,
+            type: (item.questions ? 'quiz' : 'module') as 'module' | 'quiz',
+            difficulty: item.difficulty,
+            estimatedDuration: item.estimatedDuration || item.timeLimit || 30,
+            description: item.description,
+            progress: 0
+          }));
+          setRecommendations(transformedRecommendations);
         }
       } catch (error) {
         console.error('Failed to fetch dashboard data:', error);

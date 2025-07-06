@@ -69,6 +69,7 @@ export interface AuthResponse {
 
 export interface Quiz {
   id: string;
+  _id?: string; // Backend compatibility
   title: string;
   description: string;
   subject: string;
@@ -85,6 +86,7 @@ export interface Quiz {
 
 export interface Question {
   id: string;
+  _id?: string; // Backend compatibility
   text: string;
   type: 'multiple-choice' | 'true-false' | 'fill-blank' | 'essay';
   options?: string[];
@@ -167,7 +169,8 @@ class ApiClient {
   private baseURL: string;
 
   constructor() {
-    this.baseURL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+    // Use relative path for Vite proxy in development
+    this.baseURL = import.meta.env.VITE_API_URL || '/api';
     
     this.client = axios.create({
       baseURL: this.baseURL,
