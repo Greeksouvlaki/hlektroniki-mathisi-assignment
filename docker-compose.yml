@@ -1,0 +1,130 @@
+version: '3.8'
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:6
+    container_name: adaptive-elearning-mongodb
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: adaptive_elearning
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+      - ./scripts/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    networks:
+      - adaptive-network
+
+  # Backend API Server
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: adaptive-elearning-server
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      MONGODB_URI: mongodb://admin:password@mongodb:27017/adaptive_elearning?authSource=admin
+      JWT_SECRET: your-super-secret-jwt-key-change-this-in-production
+      JWT_EXPIRES_IN: 7d
+      JWT_REFRESH_SECRET: your-super-secret-refresh-key-change-this-in-production
+      JWT_REFRESH_EXPIRES_IN: 30d
+      BCRYPT_ROUNDS: 12
+      RATE_LIMIT_WINDOW_MS: 900000
+      RATE_LIMIT_MAX_REQUESTS: 100
+      XAPI_ENDPOINT: http://localhost:8080/xapi/
+      XAPI_USERNAME: admin
+      XAPI_PASSWORD: password
+      XAPI_VERSION: 1.0.3
+      LOG_LEVEL: info
+      CORS_ORIGIN: http://localhost:5173
+      HELMET_ENABLED: true
+      COMPRESSION_ENABLED: true
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongodb
+    volumes:
+      - ./server/logs:/app/logs
+    networks:
+      - adaptive-network
+
+  # Frontend Client
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: adaptive-elearning-client
+    restart: unless-stopped
+    environment:
+      VITE_API_URL: http://localhost:3000
+      VITE_APP_NAME: Adaptive E-Learning Platform
+    ports:
+      - "5173:80"
+    depends_on:
+      - server
+    networks:
+      - adaptive-network
+
+  # Nginx Reverse Proxy (Optional)
+  nginx:
+    image: nginx:alpine
+    container_name: adaptive-elearning-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - server
+      - client
+    networks:
+      - adaptive-network
+
+  # Redis Cache (Optional)
+  redis:
+    image: redis:7-alpine
+    container_name: adaptive-elearning-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - adaptive-network
+
+  # Learning Record Store (Optional)
+  lrs:
+    image: learninglocker/learninglocker:latest
+    container_name: adaptive-elearning-lrs
+    restart: unless-stopped
+    environment:
+      MONGODB_URL: mongodb://admin:password@mongodb:27017/learninglocker?authSource=admin
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: your-lrs-jwt-secret
+      JWT_AUDIENCE: http://localhost:8080
+      JWT_ISSUER: http://localhost:8080
+      JWT_EXPIRES_IN: 24h
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongodb
+      - redis
+    networks:
+      - adaptive-network
+
+volumes:
+  mongodb_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  adaptive-network:
+    driver: bridge 
