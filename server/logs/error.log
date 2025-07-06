@@ -1,0 +1,10 @@
+2025-07-06 22:47:35:4735 [31merror[39m: [31mUncaught Exception: listen EADDRINUSE: address already in use :::3000[39m
+2025-07-06 22:51:28:5128 [31merror[39m: [31mUncaught Exception: server is not defined[39m
+2025-07-06 22:59:03:593 [31merror[39m: [31mUncaught Exception: listen EADDRINUSE: address already in use :::3000[39m
+2025-07-06 22:59:19:5919 [31merror[39m: [31mUncaught Exception: listen EADDRINUSE: address already in use :::3000[39m
+2025-07-06 22:59:45:5945 [31merror[39m: [31mUncaught Exception: listen EADDRINUSE: address already in use :::3000[39m
+2025-07-06 22:59:47:5947 [31merror[39m: [31mUncaught Exception: listen EADDRINUSE: address already in use :::3000[39m
+2025-07-06 23:00:01:01 [31merror[39m: [31mUncaught Exception: listen EADDRINUSE: address already in use :::3000[39m
+2025-07-06 23:00:08:08 [31merror[39m: [31mUncaught Exception: listen EADDRINUSE: address already in use :::3000[39m
+2025-07-06 23:00:15:015 [31merror[39m: [31mUncaught Exception: listen EADDRINUSE: address already in use :::3000[39m
+2025-07-06 23:03:43:343 [31merror[39m: [31mUncaught Exception: listen EADDRINUSE: address already in use :::3000[39m

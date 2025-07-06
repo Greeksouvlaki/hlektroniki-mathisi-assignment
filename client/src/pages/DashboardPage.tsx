@@ -47,51 +47,53 @@ export default function DashboardPage() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // TODO: Fetch user stats and recommendations from API
     const fetchDashboardData = async () => {
       try {
-        // Mock data for now
+        // Fetch real stats from API
+        const statsResponse = await fetch('/api/progress/stats', {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Content-Type': 'application/json'
+          }
+        });
+        
+        if (statsResponse.ok) {
+          const statsData = await statsResponse.json();
+          setStats({
+            totalModules: 12, // TODO: Get from modules API
+            completedModules: statsData.data.modulesCompleted || 0,
+            totalQuizzes: 24, // TODO: Get from quizzes API
+            completedQuizzes: statsData.data.quizzesCompleted || 0,
+            averageScore: statsData.data.averageScore || 0,
+            totalTimeSpent: statsData.data.totalTimeSpent || 0,
+            currentStreak: statsData.data.streakDays || 0
+          });
+        }
+
+        // Fetch recommendations from API
+        const recommendationsResponse = await fetch('/api/adaptive/recommendations', {
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Content-Type': 'application/json'
+          }
+        });
+        
+        if (recommendationsResponse.ok) {
+          const recommendationsData = await recommendationsResponse.json();
+          setRecommendations(recommendationsData.data || []);
+        }
+      } catch (error) {
+        console.error('Failed to fetch dashboard data:', error);
+        // Fallback to mock data if API fails
         setStats({
           totalModules: 12,
           completedModules: 8,
           totalQuizzes: 24,
           completedQuizzes: 18,
           averageScore: 85,
-          totalTimeSpent: 1440, // minutes
+          totalTimeSpent: 1440,
           currentStreak: 5
         });
-
-        setRecommendations([
-          {
-            id: '1',
-            title: 'Advanced JavaScript Concepts',
-            type: 'module',
-            difficulty: 'intermediate',
-            estimatedDuration: 45,
-            description: 'Learn advanced JavaScript patterns and best practices',
-            progress: 0
-          },
-          {
-            id: '2',
-            title: 'React Hooks Quiz',
-            type: 'quiz',
-            difficulty: 'intermediate',
-            estimatedDuration: 15,
-            description: 'Test your knowledge of React Hooks',
-            progress: 0
-          },
-          {
-            id: '3',
-            title: 'TypeScript Fundamentals',
-            type: 'module',
-            difficulty: 'beginner',
-            estimatedDuration: 60,
-            description: 'Master TypeScript basics and type system',
-            progress: 0
-          }
-        ]);
-      } catch (error) {
-        console.error('Failed to fetch dashboard data:', error);
       } finally {
         setIsLoading(false);
       }

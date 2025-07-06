@@ -20,9 +20,11 @@ export interface PaginatedResponse<T> extends ApiResponse<T[]> {
 
 export interface User {
   id: string;
+  _id?: string; // Backend compatibility
   email: string;
   firstName: string;
   lastName: string;
+  name?: string; // For display purposes
   role: 'student' | 'instructor' | 'admin';
   profile?: {
     avatar?: string;
@@ -94,6 +96,7 @@ export interface Question {
 
 export interface Module {
   id: string;
+  _id?: string; // Backend compatibility
   title: string;
   description: string;
   subject: string;
@@ -101,6 +104,8 @@ export interface Module {
   content: ModuleContent[];
   prerequisites: string[];
   estimatedDuration: number;
+  duration?: number; // Alternative property name
+  topics?: string[]; // For display
   tags: string[];
   isActive: boolean;
   createdBy: string;
@@ -119,6 +124,7 @@ export interface ModuleContent {
 
 export interface Progress {
   id: string;
+  _id?: string; // Backend compatibility
   userId: string;
   moduleId?: string;
   quizId?: string;
@@ -131,6 +137,10 @@ export interface Progress {
   lastAttemptAt: string;
   masteryLevel: number;
   confidenceScore: number;
+  moduleTitle?: string; // For display
+  quizTitle?: string; // For display
+  progressPercentage?: number; // For module progress
+  completedAt?: string; // Completion timestamp
   createdAt: string;
   updatedAt: string;
 }

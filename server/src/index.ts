@@ -158,19 +158,6 @@ app.use('*', (req, res) => {
 // Error handling middleware
 app.use(errorHandler);
 
-// Graceful shutdown
-const gracefulShutdown = (signal: string) => {
-  logger.info(`Received ${signal}. Starting graceful shutdown...`);
-  
-  server.close(() => {
-    logger.info('HTTP server closed');
-    mongoose.connection.close(false, () => {
-      logger.info('MongoDB connection closed');
-      process.exit(0);
-    });
-  });
-};
-
 // Start server
 const startServer = async (): Promise<void> => {
   try {
@@ -180,6 +167,19 @@ const startServer = async (): Promise<void> => {
       logger.info(`Server running on port ${PORT} in ${NODE_ENV} mode`);
       logger.info(`API Documentation available at http://localhost:${PORT}/api-docs`);
     });
+
+    // Graceful shutdown
+    const gracefulShutdown = (signal: string) => {
+      logger.info(`Received ${signal}. Starting graceful shutdown...`);
+      
+      server.close(() => {
+        logger.info('HTTP server closed');
+        mongoose.connection.close(false, () => {
+          logger.info('MongoDB connection closed');
+          process.exit(0);
+        });
+      });
+    };
 
     // Handle graceful shutdown
     process.on('SIGTERM', () => gracefulShutdown('SIGTERM'));

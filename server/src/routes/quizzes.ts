@@ -1,6 +1,8 @@
 import { Router } from 'express';
 import { authenticateToken, requireTeacher } from '../middleware/auth.js';
 import { asyncHandler } from '../middleware/errorHandler.js';
+import '../models/Module.js';
+import '../models/User.js';
 
 const router = Router();
 
@@ -29,13 +31,41 @@ const router = Router();
  *         description: Quizzes retrieved successfully
  */
 router.get('/', authenticateToken, asyncHandler(async (req, res) => {
-  // TODO: Implement quiz listing logic
-  res.status(200).json({
-    success: true,
-    data: [],
-    message: 'Quizzes retrieved successfully',
-    timestamp: new Date().toISOString()
-  });
+  try {
+    const { Quiz } = await import('../models/Quiz.js');
+    
+    // Build query based on filters
+    const query: any = { isActive: true };
+    
+    if (req.query.moduleId) {
+      query.moduleId = req.query.moduleId;
+    }
+    
+    if (req.query.difficulty) {
+      query.difficulty = req.query.difficulty;
+    }
+    
+    // Get quizzes from database
+    const quizzes = await Quiz.find(query)
+      .select('-questions.correctAnswer') // Don't send correct answers to client
+      .populate('moduleId', 'title')
+      .populate('createdBy', 'firstName lastName')
+      .sort({ createdAt: -1 });
+    
+    res.status(200).json({
+      success: true,
+      data: quizzes,
+      message: 'Quizzes retrieved successfully',
+      timestamp: new Date().toISOString()
+    });
+  } catch (error) {
+    console.error('Error fetching quizzes:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to fetch quizzes',
+      timestamp: new Date().toISOString()
+    });
+  }
 }));
 
 /**
