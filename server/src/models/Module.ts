@@ -1,9 +1,8 @@
 import mongoose, { Schema, Document } from 'mongoose';
-import { IModule, IContent } from '../types/index.js';
 
-export interface IModuleDocument extends IModule, Document {}
+export interface IModuleDocument extends Document {}
 
-const contentSchema = new Schema<IContent>(
+const contentSchema = new Schema(
   {
     type: {
       type: String,
@@ -34,7 +33,7 @@ const contentSchema = new Schema<IContent>(
   { _id: true }
 );
 
-const moduleSchema = new Schema<IModuleDocument>(
+const moduleSchema = new Schema(
   {
     title: {
       type: String,
@@ -59,11 +58,7 @@ const moduleSchema = new Schema<IModuleDocument>(
       enum: ['beginner', 'intermediate', 'advanced'],
       required: [true, 'Difficulty level is required']
     },
-    prerequisites: {
-      type: [Schema.Types.ObjectId],
-      ref: 'Module',
-      default: []
-    },
+    prerequisites: [{ type: Schema.Types.ObjectId, ref: 'Module', default: undefined }],
     learningObjectives: {
       type: [String],
       required: [true, 'Learning objectives are required'],
@@ -78,7 +73,7 @@ const moduleSchema = new Schema<IModuleDocument>(
       type: [contentSchema],
       required: [true, 'Content is required'],
       validate: {
-        validator: function(content: IContent[]) {
+        validator: function(content: any[]) {
           return content.length > 0;
         },
         message: 'Module must have at least one content item'
@@ -94,11 +89,7 @@ const moduleSchema = new Schema<IModuleDocument>(
       type: Boolean,
       default: true
     },
-    createdBy: {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
-      required: [true, 'Creator ID is required']
-    }
+    createdBy: { type: Schema.Types.ObjectId, ref: 'User', required: [true, 'Creator ID is required'] }
   },
   {
     timestamps: true,
@@ -109,7 +100,8 @@ const moduleSchema = new Schema<IModuleDocument>(
 
 // Virtual for content count
 moduleSchema.virtual('contentCount').get(function() {
-  return this.get('content') ? this.get('content').length : 0;
+  const self = this as any;
+  return self.get('content') ? self.get('content').length : 0;
 });
 
 // Virtual for completion rate (placeholder for future implementation)
@@ -126,29 +118,30 @@ moduleSchema.index({ prerequisites: 1 });
 
 // Pre-save middleware to sort content by order
 moduleSchema.pre('save', function(next) {
-  if (this.content && this.content.length > 0) {
-    this.content.sort((a, b) => a.order - b.order);
+  const self = this as any;
+  if (self.content && self.content.length > 0) {
+    self.content.sort((a: any, b: any) => a.order - b.order);
   }
   next();
 });
 
 // Static method to find active modules
-moduleSchema.statics.findActive = function() {
+moduleSchema.statics['findActive'] = function() {
   return this.find({ isActive: true }).populate('createdBy', 'firstName lastName');
 };
 
 // Static method to find modules by subject
-moduleSchema.statics.findBySubject = function(subject: string) {
+moduleSchema.statics['findBySubject'] = function(subject: string) {
   return this.find({ subject, isActive: true }).populate('createdBy', 'firstName lastName');
 };
 
 // Static method to find modules by difficulty
-moduleSchema.statics.findByDifficulty = function(difficulty: string) {
+moduleSchema.statics['findByDifficulty'] = function(difficulty: string) {
   return this.find({ difficulty, isActive: true }).populate('createdBy', 'firstName lastName');
 };
 
 // Static method to find modules without prerequisites
-moduleSchema.statics.findEntryLevel = function() {
+moduleSchema.statics['findEntryLevel'] = function() {
   return this.find({ prerequisites: { $size: 0 }, isActive: true });
 };
 

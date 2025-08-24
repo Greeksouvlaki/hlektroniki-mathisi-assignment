@@ -25,7 +25,7 @@ export interface User {
   firstName: string;
   lastName: string;
   name?: string; // For display purposes
-  role: 'student' | 'instructor' | 'admin';
+  role: 'student' | 'teacher' | 'admin';
   profile?: {
     avatar?: string;
     bio?: string;
@@ -56,7 +56,7 @@ export interface RegisterRequest {
   lastName: string;
   email: string;
   password: string;
-  role: 'student' | 'instructor';
+  role: 'student' | 'teacher';
 }
 
 export interface AuthResponse {
@@ -88,11 +88,11 @@ export interface Question {
   id: string;
   _id?: string; // Backend compatibility
   text: string;
-  type: 'multiple-choice' | 'true-false' | 'fill-blank' | 'essay';
+  type: 'multiple-choice' | 'true-false' | 'fill-in-blank' | 'essay';
   options?: string[];
   correctAnswer: string | string[];
   explanation?: string;
-  difficulty: number;
+  difficulty: 'easy' | 'medium' | 'hard';
   tags: string[];
 }
 
@@ -170,7 +170,10 @@ class ApiClient {
 
   constructor() {
     // Use relative path for Vite proxy in development
-    this.baseURL = import.meta.env.VITE_API_URL || '/api';
+    // Vite provides import.meta.env typing via vite/client; fallback to any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const env: any = import.meta as any;
+    this.baseURL = (env?.env?.VITE_API_URL as string) || '/api';
     
     this.client = axios.create({
       baseURL: this.baseURL,
@@ -213,7 +216,7 @@ class ApiClient {
             const refreshToken = localStorage.getItem('refreshToken');
             if (refreshToken) {
               const response = await this.refreshToken(refreshToken);
-              const { accessToken } = response.data.tokens;
+              const { accessToken } = (response.data as any).tokens;
               
               localStorage.setItem('accessToken', accessToken);
               originalRequest.headers.Authorization = `Bearer ${accessToken}`;
@@ -254,14 +257,12 @@ class ApiClient {
   }
 
   async refreshToken(refreshToken: string): Promise<ApiResponse<AuthResponse>> {
-    const response = await this.client.post('/auth/refresh', null, {
-      headers: { Authorization: `Bearer ${refreshToken}` }
-    });
+    const response = await this.client.post('/auth/refresh', { refreshToken });
     return response.data;
   }
 
   async getProfile(): Promise<ApiResponse<User>> {
-    const response = await this.client.get('/auth/profile');
+    const response = await this.client.get('/auth/me');
     return response.data;
   }
 
@@ -331,7 +332,7 @@ class ApiClient {
     currentStreak: number;
     weeklyProgress: Array<{ date: string; timeSpent: number; score: number }>;
   }>> {
-    const response = await this.client.get('/progress/analytics');
+    const response = await this.client.get('/progress/stats');
     return response.data;
   }
 
@@ -368,20 +369,3 @@ class ApiClient {
 
 // Export singleton instance
 export const apiClient = new ApiClient();
-
-// Export types
-export type {
-  ApiResponse,
-  PaginatedResponse,
-  User,
-  LoginRequest,
-  RegisterRequest,
-  AuthResponse,
-  Quiz,
-  Question,
-  Module,
-  ModuleContent,
-  Progress,
-  QuizSubmission,
-  ModuleProgress,
-}; 

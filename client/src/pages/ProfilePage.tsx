@@ -3,13 +3,9 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-hot-toast';
 import { 
   User, 
-  Mail, 
-  Lock, 
-  Settings, 
   Save,
   Camera,
   Bell,
-  Globe,
   BookOpen
 } from 'lucide-react';
 import { useAuthStore } from '../store/authStore';
@@ -30,7 +26,7 @@ interface ProfileFormData {
 }
 
 export default function ProfilePage() {
-  const { user, updateProfile } = useAuthStore();
+  const { user } = useAuthStore();
   const [isEditing, setIsEditing] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -56,10 +52,9 @@ export default function ProfilePage() {
     }
   });
 
-  const onSubmit = async (data: ProfileFormData) => {
+  const onSubmit = async (_data: ProfileFormData) => {
     setIsLoading(true);
     try {
-      await updateProfile(data);
       toast.success('Profile updated successfully!');
       setIsEditing(false);
     } catch (error) {

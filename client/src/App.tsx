@@ -6,6 +6,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
 import QuizPage from './pages/QuizPage';
+import ModulePage from './pages/ModulePage';
 import ProfilePage from './pages/ProfilePage';
 import ModulesPage from './pages/ModulesPage';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -35,6 +36,7 @@ function App() {
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<DashboardPage />} />
           <Route path="modules" element={<ModulesPage />} />
+          <Route path="modules/:id" element={<ModulePage />} />
           <Route path="quizzes" element={<QuizzesPage />} />
           <Route path="progress" element={<ProgressPage />} />
           <Route path="recommendations" element={<RecommendationsPage />} />

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
-import { apiClient, Quiz, Question } from '../services/api';
+import { apiClient, Quiz } from '../services/api';
 import { 
   ArrowLeft, 
   ArrowRight, 
@@ -299,7 +299,7 @@ export default function QuizPage() {
               </div>
             )}
 
-            {currentQuestion?.type === 'fill-blank' && (
+            {currentQuestion?.type === 'fill-in-blank' && (
               <div>
                 <textarea
                   value={getCurrentAnswer()}

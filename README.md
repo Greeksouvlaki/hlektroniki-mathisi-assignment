@@ -1,229 +1,316 @@
-# Adaptive E-Learning Platform
+# 🎓 Adaptive E-Learning Platform
 
-A full-stack web application for adaptive e-learning that personalizes content based on student performance, response times, and mastery levels.
+Μια σύγχρονη πλατφόρμα προσαρμοστικής ηλεκτρονικής μάθησης που προσαρμόζεται στις ανάγκες κάθε μαθητή.
 
-## 🚀 Features
+## 🌟 Χαρακτηριστικά
 
-- **Adaptive Learning**: Dynamic difficulty adjustment based on performance
-- **JWT Authentication**: Secure user registration and login
-- **xAPI Integration**: Learning analytics tracking with Learning Record Store
-- **Real-time Progress**: Track student performance and response times
-- **Modern UI**: Responsive design with Tailwind CSS
-- **TypeScript**: Full type safety across frontend and backend
+- **🔐 Ασφαλής Authentication** με JWT
+- **🧠 Προσαρμοστικός Αλγόριθμος** προτάσεων εκμάθησης
+- **📊 Παρακολούθηση Προόδου** με αναλυτικά στατιστικά
+- **🧪 Διαδραστικά Quizzes** με αυτόματη βαθμολόγηση
+- **📚 Διαχείριση Modules** εκμάθησης
+- **🎯 Προσωπικοποιημένες Προτάσεις** βάσει προόδου
+- **📱 Responsive Design** για όλες τις συσκευές
+- **⚡ Real-time Updates** με WebSocket
+- **🔍 Αναζήτηση και Φιλτράρισμα** περιεχομένου
 
-## 🛠 Tech Stack
-
-### Backend
-- **Runtime**: Node.js 18+ with TypeScript
-- **Framework**: Express.js
-- **Database**: MongoDB with Mongoose ODM
-- **Authentication**: JWT with bcrypt password hashing
-- **Validation**: Joi schema validation
-- **Logging**: Winston
-- **Testing**: Jest
-
-### Frontend
-- **Framework**: React 18+ with TypeScript
-- **Build Tool**: Vite
-- **Styling**: Tailwind CSS
-- **State Management**: React Context + Zustand
-- **Routing**: React Router v6
-- **Charts**: Recharts
-- **Testing**: Jest + React Testing Library
-
-### DevOps
-- **Containerization**: Docker + Docker Compose
-- **CI/CD**: GitHub Actions
-- **Code Quality**: ESLint + Prettier + Husky
-
-## 🏗 Architecture
-
-```mermaid
-graph TB
-    subgraph "Frontend (React + Vite)"
-        UI[User Interface]
-        Router[React Router]
-        State[State Management]
-        API[API Client]
-    end
-    
-    subgraph "Backend (Node.js + Express)"
-        Auth[Authentication]
-        QuizAPI[Quiz API]
-        ModuleAPI[Module API]
-        ProgressAPI[Progress API]
-        AdaptiveAPI[Adaptive API]
-        xAPI[xAPI Service]
-    end
-    
-    subgraph "Services"
-        AdaptiveEngine[Adaptive Engine]
-        LRS[Learning Record Store]
-    end
-    
-    subgraph "Data Layer"
-        MongoDB[(MongoDB)]
-        Models[Data Models]
-    end
-    
-    UI --> Router
-    Router --> State
-    State --> API
-    API --> Auth
-    API --> QuizAPI
-    API --> ModuleAPI
-    API --> ProgressAPI
-    API --> AdaptiveAPI
-    
-    Auth --> MongoDB
-    QuizAPI --> Models
-    ModuleAPI --> Models
-    ProgressAPI --> Models
-    AdaptiveAPI --> AdaptiveEngine
-    AdaptiveEngine --> Models
-    
-    ProgressAPI --> xAPI
-    xAPI --> LRS
-    
-    Models --> MongoDB
-```
-
-## 📁 Project Structure
+## 🏗️ Αρχιτεκτονική
 
 ```
-adaptive-elearning/
-├── client/                 # React frontend
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   Frontend      │    │   Backend       │    │   Database      │
+│   (React)       │◄──►│   (Express)     │◄──►│   (MongoDB)     │
+│   Port: 5173    │    │   Port: 3000    │    │                 │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+```
+
+## 🚀 Γρήγορη Εκκίνηση
+
+### Προαπαιτούμενα
+
+- **Node.js** >= 18.0.0
+- **MongoDB** >= 5.0
+- **npm** ή **yarn**
+
+### Εγκατάσταση
+
+1. **Clone το repository**
+   ```bash
+   git clone <repository-url>
+   cd Ηλεκτρονική\ Μάθηση
+   ```
+
+2. **Εγκατάσταση dependencies**
+   ```bash
+   # Backend
+   cd server && npm install
+   
+   # Frontend
+   cd ../client && npm install
+   
+   # Shared types
+   cd ../shared && npm install
+   ```
+
+3. **Ρύθμιση Environment Variables**
+
+   **Backend** (`server/.env`):
+   ```env
+   NODE_ENV=development
+   PORT=3000
+   MONGODB_URI=mongodb://localhost:27017/adaptive_elearning
+   JWT_SECRET=your_jwt_secret_here
+   JWT_EXPIRES_IN=7d
+   RATE_LIMIT_WINDOW_MS=900000
+   RATE_LIMIT_MAX_REQUESTS=100
+   ```
+
+   **Frontend** (`client/.env`):
+   ```env
+    VITE_API_URL=http://localhost:3000/api
+   VITE_APP_NAME=Adaptive E-Learning Platform
+   ```
+
+4. **Εκκίνηση Servers**
+
+   **Terminal 1 - Backend:**
+   ```bash
+   cd server
+   npm run dev
+   ```
+
+   **Terminal 2 - Frontend:**
+   ```bash
+   cd client
+   npm run dev
+   ```
+
+5. **Πρόσβαση στην Εφαρμογή**
+   - Frontend: http://localhost:5173
+   - Backend API: http://localhost:3000
+   - API Documentation: http://localhost:3000/api-docs
+
+6. **Testing**
+   - See `test-app.md` for detailed testing instructions
+   - The app uses mock data when MongoDB is not available
+
+## 👥 Test Accounts
+
+### Student Account
+- **Email:** `student@test.com`
+- **Password:** `password123`
+
+### Teacher Account
+- **Email:** `teacher@test.com`
+- **Password:** `password123`
+
+### Admin Account
+- **Email:** `admin@test.com`
+- **Password:** `password123`
+
+## 📁 Δομή Project
+
+```
+Ηλεκτρονική Μάθηση/
+├── client/                 # Frontend React Application
 │   ├── src/
-│   │   ├── components/     # React components
-│   │   ├── pages/         # Page components
-│   │   ├── hooks/         # Custom hooks
-│   │   ├── services/      # API services
-│   │   ├── store/         # State management
-│   │   ├── types/         # TypeScript types
-│   │   └── utils/         # Utility functions
-│   ├── public/            # Static assets
-│   └── tests/             # Frontend tests
-├── server/                # Node.js backend
+│   │   ├── components/     # Reusable UI Components
+│   │   ├── pages/         # Page Components
+│   │   ├── services/      # API Services
+│   │   ├── store/         # State Management (Zustand)
+│   │   ├── types/         # TypeScript Types
+│   │   └── utils/         # Utility Functions
+│   ├── public/            # Static Assets
+│   └── package.json
+├── server/                # Backend Express Application
 │   ├── src/
-│   │   ├── controllers/   # Route controllers
-│   │   ├── middleware/    # Express middleware
-│   │   ├── models/        # Mongoose models
-│   │   ├── routes/        # API routes
-│   │   ├── services/      # Business logic
-│   │   ├── utils/         # Utility functions
-│   │   └── types/         # TypeScript types
-│   └── tests/             # Backend tests
-├── shared/                # Shared types and utilities
+│   │   ├── controllers/   # Route Controllers
+│   │   ├── middleware/    # Express Middleware
+│   │   ├── models/        # Mongoose Models
+│   │   ├── routes/        # API Routes
+│   │   ├── services/      # Business Logic
+│   │   ├── types/         # TypeScript Types
+│   │   └── utils/         # Utility Functions
+│   ├── scripts/           # Database Seeding
+│   └── package.json
+├── shared/                # Shared Types
 ├── docs/                  # Documentation
-├── scripts/               # Build and deployment scripts
-└── docker/                # Docker configuration
+│   ├── developer-guide.md # Εγχειρίδιο Προγραμματιστή
+│   ├── user-guide.md      # Εγχειρίδιο Χρήστη
+│   └── faq.md            # Συχνές Ερωτήσεις
+├── docker/                # Docker Configuration
+├── docker-compose.yml     # Docker Compose Setup
+└── README.md
 ```
 
-## 🚀 Quick Start
+## 🔧 API Endpoints
 
-### Prerequisites
-- Node.js 18+
-- MongoDB 6+
-- Docker & Docker Compose (optional)
+### Authentication
+- `POST /api/auth/register` - User registration
+- `POST /api/auth/login` - User login
+- `GET /api/auth/profile` - Get user profile
+- `PUT /api/auth/profile` - Update user profile
 
-### Installation
+### Modules
+- `GET /api/modules` - Get all modules
+- `GET /api/modules/:id` - Get specific module
+- `POST /api/modules` - Create module (admin only)
+- `PUT /api/modules/:id` - Update module (admin only)
+- `DELETE /api/modules/:id` - Delete module (admin only)
 
-1. **Clone and install dependencies:**
-```bash
-git clone <repository-url>
-cd adaptive-elearning
+### Quizzes
+- `GET /api/quizzes` - Get all quizzes
+- `GET /api/quizzes/:id` - Get specific quiz
+- `POST /api/quizzes` - Create quiz (admin only)
+- `PUT /api/quizzes/:id` - Update quiz (admin only)
+- `DELETE /api/quizzes/:id` - Delete quiz (admin only)
+- `POST /api/quizzes/:id/submit` - Submit quiz answers
 
-# Install backend dependencies
-cd server && npm install
+### Progress
+- `GET /api/progress` - Get user progress
+- `GET /api/progress/analytics` - Get progress analytics
+- `POST /api/progress` - Update progress
 
-# Install frontend dependencies
-cd ../client && npm install
-
-# Install shared dependencies
-cd ../shared && npm install
-```
-
-2. **Environment setup:**
-```bash
-# Copy environment files
-cp server/.env.example server/.env
-cp client/.env.example client/.env
-
-# Edit environment variables
-nano server/.env
-nano client/.env
-```
-
-3. **Database setup:**
-```bash
-# Start MongoDB (if using Docker)
-docker-compose up -d mongodb
-
-# Or start MongoDB locally
-mongod
-```
-
-4. **Run development servers:**
-```bash
-# Terminal 1: Start backend
-cd server && npm run dev
-
-# Terminal 2: Start frontend
-cd client && npm run dev
-```
-
-5. **Access the application:**
-- Frontend: http://localhost:5173
-- Backend API: http://localhost:3000
-- API Documentation: http://localhost:3000/api-docs
-
-### Docker Deployment
-
-```bash
-# Build and run with Docker Compose
-docker-compose up --build
-
-# Run in background
-docker-compose up -d
-```
+### Adaptive Learning
+- `GET /api/adaptive/recommendations` - Get personalized recommendations
+- `POST /api/adaptive/feedback` - Submit learning feedback
 
 ## 🧪 Testing
 
+### Backend Tests
 ```bash
-# Run all tests
-npm run test
-
-# Run backend tests
-cd server && npm test
-
-# Run frontend tests
-cd client && npm test
-
-# Run tests with coverage
+cd server
+npm test
 npm run test:coverage
 ```
 
+### Frontend Tests
+```bash
+cd client
+npm test
+npm run test:coverage
+```
+
+## 🐳 Docker Deployment
+
+### Development
+```bash
+docker-compose up -d
+```
+
+### Production
+```bash
+# Build images
+docker-compose -f docker-compose.prod.yml build
+
+# Deploy
+docker-compose -f docker-compose.prod.yml up -d
+```
+
+## 📊 Database Seeding
+
+### Seed Test Data
+```bash
+cd server
+npm run seed:users
+npm run seed:modules
+npm run seed:quizzes
+npm run seed:progress
+```
+
+## 🔧 Development Scripts
+
+### Backend
+```bash
+cd server
+npm run dev          # Development server
+npm run build        # Build for production
+npm run start        # Production server
+npm run lint         # Lint code
+npm run lint:fix     # Fix linting issues
+npm run format       # Format code
+npm run type-check   # TypeScript check
+```
+
+### Frontend
+```bash
+cd client
+npm run dev          # Development server
+npm run build        # Build for production
+npm run preview      # Preview production build
+npm run lint         # Lint code
+npm run lint:fix     # Fix linting issues
+npm run format       # Format code
+npm run type-check   # TypeScript check
+```
+
+## 🛠️ Technology Stack
+
+### Backend
+- **Node.js** - Runtime environment
+- **Express.js** - Web framework
+- **TypeScript** - Type safety
+- **MongoDB** - Database
+- **Mongoose** - ODM
+- **JWT** - Authentication
+- **bcrypt** - Password hashing
+- **Winston** - Logging
+- **Jest** - Testing
+
+### Frontend
+- **React** - UI library
+- **TypeScript** - Type safety
+- **Vite** - Build tool
+- **Tailwind CSS** - Styling
+- **Zustand** - State management
+- **React Router** - Routing
+- **Axios** - HTTP client
+- **React Testing Library** - Testing
+
+### DevOps
+- **Docker** - Containerization
+- **Docker Compose** - Multi-container setup
+- **ESLint** - Code linting
+- **Prettier** - Code formatting
+- **Husky** - Git hooks
+
 ## 📚 Documentation
 
-- [Developer Guide](./docs/developer.md) - Technical documentation
-- [User Guide](./docs/user-guide.md) - End-user documentation
-- [API Reference](./docs/openapi.yaml) - OpenAPI specification
+- **[Εγχειρίδιο Προγραμματιστή](docs/developer-guide.md)** - Τεχνική τεκμηρίωση
+- **[Εγχειρίδιο Χρήστη](docs/user-guide.md)** - Οδηγίες χρήσης
+- **[API Documentation](http://localhost:3000/api-docs)** - Swagger documentation
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+1. Fork το repository
+2. Δημιουργήστε ένα feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit τις αλλαγές (`git commit -m 'Add amazing feature'`)
+4. Push στο branch (`git push origin feature/amazing-feature`)
+5. Ανοίξτε ένα Pull Request
 
-## 📄 License
+## 📝 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Αυτό το project είναι υπό την άδεια MIT. Δείτε το αρχείο [LICENSE](LICENSE) για περισσότερες λεπτομέρειες.
 
-## 🆘 Support
+## 👨‍💻 Authors
 
-For support and questions:
-- Create an issue in the repository
-- Check the [documentation](./docs/)
-- Review the [FAQ](./docs/faq.md) 
+- **Your Name** - *Initial work* - [YourGitHub](https://github.com/yourusername)
+
+## 🙏 Acknowledgments
+
+- React team για το φανταστικό framework
+- Express.js team για το backend framework
+- MongoDB team για τη βάση δεδομένων
+- Tailwind CSS team για το styling framework
+
+## 📞 Support
+
+Για ερωτήσεις και υποστήριξη:
+
+- 📧 Email: support@adaptive-elearning.com
+- 📖 Documentation: [docs/](docs/)
+- 🐛 Issues: [GitHub Issues](https://github.com/yourusername/adaptive-elearning/issues)
+
+---
+
+**Καλή εκμάθηση! 🚀** 

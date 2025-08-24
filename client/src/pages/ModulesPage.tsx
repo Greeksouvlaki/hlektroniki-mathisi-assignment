@@ -121,9 +121,9 @@ const ModulesPage = () => {
             </div>
 
             <div className="card-footer">
-              <button className="btn btn-primary w-full">
+              <a href={`/modules/${module._id || module.id}`} className="btn btn-primary w-full">
                 {module.isCompleted ? 'Review Module' : 'Start Module'}
-              </button>
+              </a>
             </div>
           </div>
         ))}

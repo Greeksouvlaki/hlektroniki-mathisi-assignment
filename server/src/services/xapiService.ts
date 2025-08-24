@@ -2,10 +2,10 @@ import { IXAPIStatement, IProgress } from '../types/index.js';
 import { User } from '../models/User.js';
 
 export class XAPIService {
-  private static readonly XAPI_ENDPOINT = process.env.XAPI_ENDPOINT || 'http://localhost:8080/xapi/';
-  private static readonly XAPI_USERNAME = process.env.XAPI_USERNAME || 'admin';
-  private static readonly XAPI_PASSWORD = process.env.XAPI_PASSWORD || 'password';
-  private static readonly XAPI_VERSION = process.env.XAPI_VERSION || '1.0.3';
+  private static readonly XAPI_ENDPOINT = ((process.env as any)['XAPI_ENDPOINT'] as string) || 'http://localhost:8080/xapi/';
+  private static readonly XAPI_USERNAME = ((process.env as any)['XAPI_USERNAME'] as string) || 'admin';
+  private static readonly XAPI_PASSWORD = ((process.env as any)['XAPI_PASSWORD'] as string) || 'password';
+  private static readonly XAPI_VERSION = ((process.env as any)['XAPI_VERSION'] as string) || '1.0.3';
 
   /**
    * Send xAPI statement to Learning Record Store
@@ -309,11 +309,6 @@ export class XAPIService {
         }
       },
       result: {
-        extensions: {
-          'http://adaptive-elearning.com/extensions/difficulty': recommendation.difficultyLevel,
-          'http://adaptive-elearning.com/extensions/confidence': recommendation.confidence,
-          'http://adaptive-elearning.com/extensions/reasoning': recommendation.reasoning
-        }
       },
       context: {
         contextActivities: {
@@ -323,6 +318,11 @@ export class XAPIService {
               objectType: 'Activity'
             }
           ]
+        },
+        extensions: {
+          'http://adaptive-elearning.com/extensions/difficulty': recommendation.difficultyLevel,
+          'http://adaptive-elearning.com/extensions/confidence': recommendation.confidence,
+          'http://adaptive-elearning.com/extensions/reasoning': recommendation.reasoning
         }
       },
       timestamp: new Date().toISOString()

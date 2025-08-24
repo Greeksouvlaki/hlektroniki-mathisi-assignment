@@ -237,6 +237,37 @@ router.get('/me', authenticateToken, asyncHandler(getProfile));
 
 /**
  * @swagger
+ * /api/auth/profile:
+ *   put:
+ *     summary: Update current user profile
+ *     tags: [Authentication]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               firstName:
+ *                 type: string
+ *               lastName:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Profile updated successfully
+ */
+router.put('/profile', authenticateToken, asyncHandler(async (req: any, res: any) => {
+  const { User } = await import('../models/User.js');
+  const userId = (req as any).userId || (req as any).user?._id?.toString();
+  const { firstName, lastName } = req.body;
+  const updated = await User.findByIdAndUpdate(userId, { firstName, lastName }, { new: true });
+  res.status(200).json({ success: true, data: { user: updated }, message: 'Profile updated successfully', timestamp: new Date().toISOString() });
+}));
+
+/**
+ * @swagger
  * /api/auth/logout:
  *   post:
  *     summary: Logout user

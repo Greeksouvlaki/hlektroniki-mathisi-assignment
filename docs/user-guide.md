@@ -1,451 +1,430 @@
-# User Guide - Adaptive E-Learning Platform
-
-## Table of Contents
-
-1. [Getting Started](#getting-started)
-2. [Registration and Login](#registration-and-login)
-3. [Dashboard Overview](#dashboard-overview)
-4. [Learning Modules](#learning-modules)
-5. [Taking Quizzes](#taking-quizzes)
-6. [Progress Tracking](#progress-tracking)
-7. [Adaptive Features](#adaptive-features)
-8. [Profile Management](#profile-management)
-9. [Troubleshooting](#troubleshooting)
-
-## Getting Started
-
-### Welcome to Adaptive Learning
-
-The Adaptive E-Learning Platform provides a personalized learning experience that adapts to your performance, learning style, and pace. The system analyzes your responses, time spent on questions, and overall progress to recommend the most suitable content for your current skill level.
-
-### Key Features
-
-- **Personalized Learning Path**: Content adapts based on your performance
-- **Real-time Feedback**: Immediate feedback on quiz responses
-- **Progress Tracking**: Visual representation of your learning journey
-- **Adaptive Difficulty**: Questions adjust to your skill level
-- **Learning Analytics**: Detailed insights into your performance
-
-## Registration and Login
-
-### Creating an Account
-
-1. **Navigate to Registration**
-   - Visit the platform homepage
-   - Click "Sign Up" or "Register"
-
-2. **Fill in Your Information**
-   - **Email**: Use a valid email address
-   - **Password**: Create a strong password (minimum 8 characters)
-   - **First Name**: Your first name
-   - **Last Name**: Your last name
-   - **Role**: Select "Student" (default)
-
-3. **Complete Registration**
-   - Click "Create Account"
-   - Verify your email if required
-   - You'll be automatically logged in
-
-### Logging In
-
-1. **Access Login Page**
-   - Click "Login" or "Sign In"
-   - Or navigate to `/login`
-
-2. **Enter Credentials**
-   - **Email**: Your registered email address
-   - **Password**: Your account password
-
-3. **Access Your Dashboard**
-   - Click "Login"
-   - You'll be redirected to your personalized dashboard
-
-### Password Recovery
-
-If you forget your password:
-
-1. Click "Forgot Password?" on the login page
-2. Enter your email address
-3. Check your email for reset instructions
-4. Follow the link to create a new password
-
-## Dashboard Overview
-
-### Main Dashboard
-
-![Dashboard Overview](images/dashboard-overview.png)
-
-The dashboard is your learning hub, providing:
-
-- **Welcome Message**: Personalized greeting with your name
-- **Current Progress**: Overview of your learning journey
-- **Recommended Content**: Next suggested modules/quizzes
-- **Recent Activity**: Your latest learning sessions
-- **Performance Stats**: Key metrics and achievements
-
-### Navigation
-
-- **Dashboard**: Main overview page
-- **Modules**: Browse available learning content
-- **Quizzes**: Access assessments and tests
-- **Progress**: View detailed learning analytics
-- **Profile**: Manage your account settings
-
-### Quick Actions
-
-- **Start Learning**: Begin recommended content
-- **Continue**: Resume where you left off
-- **Review**: Revisit completed material
-- **Practice**: Take additional quizzes
-
-## Learning Modules
-
-### Module Structure
-
-Each learning module contains:
-
-- **Overview**: Introduction and learning objectives
-- **Content Sections**: Organized learning material
-- **Interactive Elements**: Videos, images, and exercises
-- **Assessment**: End-of-module quiz
-- **Estimated Duration**: Time to complete the module
-
-### Starting a Module
-
-1. **Browse Available Modules**
-   - Visit the "Modules" section
-   - Filter by subject or difficulty level
-   - Read module descriptions
-
-2. **Select a Module**
-   - Click on a module that interests you
-   - Review the learning objectives
-   - Check prerequisites if any
-
-3. **Begin Learning**
-   - Click "Start Module"
-   - Progress through content sections
-   - Complete interactive exercises
-
-### Module Navigation
-
-- **Progress Bar**: Shows completion percentage
-- **Section Navigation**: Jump between content sections
-- **Bookmarks**: Save your place for later
-- **Notes**: Add personal notes and highlights
-
-### Content Types
-
-- **Text Content**: Written explanations and concepts
-- **Video Lessons**: Visual and audio learning
-- **Interactive Exercises**: Hands-on practice
-- **Infographics**: Visual representations of concepts
-- **Code Examples**: Programming and technical content
-
-## Taking Quizzes
-
-### Quiz Types
-
-The platform offers various quiz formats:
-
-- **Multiple Choice**: Select the best answer from options
-- **True/False**: Determine if statements are correct
-- **Fill-in-the-Blank**: Complete missing information
-- **Essay Questions**: Provide detailed written responses
-
-### Starting a Quiz
-
-1. **Access Quiz**
-   - From module completion
-   - From dashboard recommendations
-   - From quiz library
-
-2. **Review Instructions**
-   - Read quiz description
-   - Note time limits
-   - Understand question types
-
-3. **Begin Assessment**
-   - Click "Start Quiz"
-   - Timer begins (if applicable)
-   - Answer questions sequentially
-
-### Quiz Interface
-
-![Quiz Interface](images/quiz-interface.png)
-
-- **Question Display**: Current question with options
-- **Progress Indicator**: Question number and total
-- **Timer**: Time remaining (if applicable)
-- **Navigation**: Previous/Next buttons
-- **Submit**: Complete the quiz
-
-### Answering Questions
-
-1. **Read Carefully**
-   - Understand the question completely
-   - Review all answer options
-   - Consider context and details
-
-2. **Select Your Answer**
-   - Click on your chosen option
-   - For multiple choice, only one answer is correct
-   - For essay questions, type your response
-
-3. **Review Before Submitting**
-   - Double-check your answer
-   - Ensure you've addressed all parts
-   - Use available time wisely
-
-### Quiz Completion
-
-1. **Submit Quiz**
-   - Click "Submit Quiz" when finished
-   - Confirm submission if prompted
-   - Wait for results processing
-
-2. **Review Results**
-   - See your overall score
-   - Review correct/incorrect answers
-   - Read explanations for wrong answers
-
-3. **Adaptive Feedback**
-   - Receive difficulty recommendations
-   - Get suggestions for improvement
-   - View next learning steps
-
-## Progress Tracking
-
-### Progress Dashboard
-
-![Progress Dashboard](images/progress-dashboard.png)
-
-The progress section provides comprehensive insights:
-
-- **Overall Progress**: Percentage of completed content
-- **Subject Breakdown**: Performance by topic area
-- **Time Tracking**: Total study time and sessions
-- **Achievement Badges**: Recognition for milestones
-- **Learning Streak**: Consecutive days of study
-
-### Performance Metrics
-
-#### Score Analysis
-- **Average Score**: Overall performance across quizzes
-- **Improvement Trend**: Progress over time
-- **Subject Performance**: Strengths and weaknesses
-- **Difficulty Level**: Performance by complexity
-
-#### Time Analytics
-- **Study Duration**: Total time spent learning
-- **Session Length**: Average time per session
-- **Response Time**: Speed of answering questions
-- **Efficiency**: Time vs. performance correlation
-
-### Progress Charts
-
-#### Performance Over Time
-- Line chart showing score progression
-- Trend analysis and predictions
-- Goal setting and achievement tracking
-
-#### Subject Mastery
-- Radar chart of different subjects
-- Strength and weakness identification
-- Focus area recommendations
-
-#### Learning Patterns
-- Study time distribution
-- Session frequency analysis
-- Optimal learning time identification
-
-### Achievement System
-
-#### Badges and Rewards
-- **Completion Badges**: Module and quiz completion
-- **Performance Badges**: High scores and improvements
-- **Consistency Badges**: Regular study habits
-- **Mastery Badges**: Subject expertise recognition
-
-#### Progress Milestones
-- **First Quiz**: Complete your first assessment
-- **Perfect Score**: Achieve 100% on any quiz
-- **Learning Streak**: Study for consecutive days
-- **Subject Master**: Complete all content in a subject
-
-## Adaptive Features
-
-### How Adaptive Learning Works
-
-The platform uses advanced algorithms to personalize your learning experience:
-
-1. **Performance Analysis**: Analyzes your quiz scores, response times, and patterns
-2. **Difficulty Adjustment**: Adjusts question difficulty based on your performance
-3. **Content Recommendation**: Suggests the most suitable next content
-4. **Learning Path Optimization**: Creates personalized learning sequences
-
-### Adaptive Difficulty
-
-#### Difficulty Levels
-- **Easy**: Basic concepts and foundational knowledge
-- **Medium**: Intermediate applications and problem-solving
-- **Hard**: Advanced concepts and complex scenarios
-
-#### Dynamic Adjustment
-- **Performance-Based**: Difficulty changes based on recent scores
-- **Time-Based**: Considers how quickly you answer questions
-- **Pattern Recognition**: Identifies your learning patterns
-- **Confidence Scoring**: Measures recommendation reliability
-
-### Personalized Recommendations
-
-#### Content Suggestions
-- **Next Module**: Recommended learning content
-- **Practice Quizzes**: Additional assessment opportunities
-- **Review Material**: Content to reinforce weak areas
-- **Advanced Topics**: Challenging content for strong performers
-
-#### Learning Path
-- **Sequential Progression**: Logical content flow
-- **Prerequisite Checking**: Ensures foundational knowledge
-- **Branching Paths**: Alternative learning routes
-- **Adaptive Sequencing**: Dynamic path adjustment
-
-### Adaptive Feedback
-
-#### Real-time Feedback
-- **Immediate Response**: Instant feedback on answers
-- **Explanation**: Detailed explanations for incorrect answers
-- **Hints**: Progressive hints for difficult questions
-- **Encouragement**: Motivational messages and support
-
-#### Performance Insights
-- **Strength Identification**: Areas where you excel
-- **Weakness Analysis**: Topics needing improvement
-- **Learning Recommendations**: Specific study suggestions
-- **Progress Projections**: Expected improvement timelines
-
-## Profile Management
-
-### Account Settings
-
-#### Personal Information
-- **Profile Picture**: Upload and manage your photo
-- **Contact Information**: Update email and preferences
-- **Learning Preferences**: Set study preferences
-- **Privacy Settings**: Control data sharing options
-
-#### Learning Preferences
-- **Study Time**: Preferred study schedule
-- **Content Type**: Preferred learning materials
-- **Difficulty Preference**: Initial difficulty setting
-- **Notification Settings**: Email and in-app notifications
-
-### Password Management
-
-#### Change Password
-1. Navigate to Profile Settings
-2. Click "Change Password"
-3. Enter current password
-4. Create new password
-5. Confirm new password
-6. Save changes
-
-#### Security Best Practices
-- Use strong, unique passwords
-- Enable two-factor authentication if available
-- Regularly update your password
-- Never share your credentials
-
-### Data and Privacy
-
-#### Your Data
-- **Learning Progress**: All your quiz results and progress
-- **Study Patterns**: Time spent and learning behaviors
-- **Personal Information**: Account details and preferences
-- **Analytics Data**: Performance metrics and insights
-
-#### Privacy Controls
-- **Data Sharing**: Control what data is shared
-- **Analytics Opt-out**: Choose participation in analytics
-- **Data Export**: Download your learning data
-- **Account Deletion**: Remove your account and data
-
-## Troubleshooting
-
-### Common Issues
-
-#### Login Problems
-**Issue**: Can't log in with correct credentials
-**Solution**:
-1. Check email spelling
-2. Ensure caps lock is off
-3. Try password reset
-4. Clear browser cache
-5. Contact support if persistent
-
-#### Quiz Issues
-**Issue**: Quiz not loading or freezing
-**Solution**:
-1. Refresh the page
-2. Check internet connection
-3. Clear browser cache
-4. Try different browser
-5. Contact support with error details
-
-#### Progress Not Saving
-**Issue**: Completed work not appearing in progress
-**Solution**:
-1. Check internet connection
-2. Wait for auto-save
-3. Refresh the page
-4. Contact support with specific details
-
-### Technical Requirements
-
-#### Browser Compatibility
-- **Chrome**: Version 90+
-- **Firefox**: Version 88+
-- **Safari**: Version 14+
-- **Edge**: Version 90+
-
-#### System Requirements
-- **Internet**: Stable broadband connection
-- **JavaScript**: Must be enabled
-- **Cookies**: Must be enabled
-- **Storage**: 100MB available space
-
-### Getting Help
-
-#### Support Channels
-- **Help Center**: Comprehensive FAQ and guides
-- **Email Support**: support@adaptive-elearning.com
-- **Live Chat**: Available during business hours
-- **Community Forum**: Peer support and discussions
-
-#### Contact Information
-- **Technical Support**: tech-support@adaptive-elearning.com
-- **General Inquiries**: info@adaptive-elearning.com
-- **Feature Requests**: features@adaptive-elearning.com
-
-### Best Practices
-
-#### Optimal Learning Experience
-- **Regular Study**: Maintain consistent study schedule
-- **Complete Sessions**: Finish modules and quizzes fully
-- **Review Mistakes**: Learn from incorrect answers
-- **Take Notes**: Use built-in note-taking features
-- **Set Goals**: Establish learning objectives
-
-#### Performance Tips
-- **Focus Environment**: Minimize distractions
-- **Time Management**: Use estimated durations
-- **Practice Regularly**: Take additional quizzes
-- **Review Progress**: Monitor your learning journey
-- **Ask Questions**: Use support when needed
-
-## Conclusion
-
-The Adaptive E-Learning Platform is designed to provide a personalized, effective learning experience. By understanding how the system works and following these guidelines, you can maximize your learning potential and achieve your educational goals.
-
-Remember that the platform adapts to your needs, so the more you use it, the better it becomes at providing relevant content and recommendations. Happy learning! 
+# Εγχειρίδιο Χρήστη - Adaptive E-Learning Platform
+
+## 📋 Περιεχόμενα
+1. [Εισαγωγή](#εισαγωγή)
+2. [Γρήγορη Εκκίνηση](#γρήγορη-εκκίνηση)
+3. [Δημιουργία Λογαριασμού](#δημιουργία-λογαριασμού)
+4. [Σύνδεση στο Σύστημα](#σύνδεση-στο-σύστημα)
+5. [Dashboard - Αρχική Σελίδα](#dashboard---αρχική-σελίδα)
+6. [Εκμάθηση Modules](#εκμάθηση-modules)
+7. [Quizzes - Τεστάρισμα](#quizzes---τεστάρισμα)
+8. [Παρακολούθηση Προόδου](#παρακολούθηση-προόδου)
+9. [Προτάσεις Εκμάθησης](#προτάσεις-εκμάθησης)
+10. [Προφίλ Χρήστη](#προφίλ-χρήστη)
+11. [Συχνές Ερωτήσεις](#συχνές-ερωτήσεις)
+
+## 🎯 Εισαγωγή
+
+Καλώς ήρθατε στην **Adaptive E-Learning Platform**! Αυτή η πλατφόρμα προσαρμόζεται στις ανάγκες εκμάθησής σας και σας παρέχει προσωπικοποιημένη εμπειρία εκμάθησης.
+
+### 🌟 Βασικά Χαρακτηριστικά
+- **Προσαρμοστική Εκμάθηση**: Το σύστημα προσαρμόζεται στο επίπεδο και το στυλ εκμάθησής σας
+- **Προσωπικοποιημένες Προτάσεις**: Λαμβάνετε προτάσεις βάσει της προόδου σας
+- **Παρακολούθηση Προόδου**: Δείτε την εξέλιξή σας με αναλυτικά στατιστικά
+- **Διαδραστικά Quizzes**: Ελέγξτε τις γνώσεις σας με διαδραστικά τεστ
+- **Σύγχρονη Διεπαφή**: Εύκολη και διαισθητική χρήση
+
+## 🚀 Γρήγορη Εκκίνηση
+
+### Προαπαιτούμενα
+- Σύγχρονος web browser (Chrome, Firefox, Safari, Edge)
+- Σύνδεση στο διαδίκτυο
+- Email διεύθυνση για εγγραφή
+
+### Εκκίνηση Εφαρμογής
+1. Ανοίξτε τον browser σας
+2. Επισκεφθείτε: `http://localhost:5173`
+3. Επιλέξτε "Register" για νέο λογαριασμό ή "Login" για υπάρχοντα
+
+## 📝 Δημιουργία Λογαριασμού
+
+### Βήματα Εγγραφής
+1. **Επισκεφθείτε τη σελίδα εγγραφής**
+   - Κάντε κλικ στο "Register" στην αρχική σελίδα
+
+2. **Συμπληρώστε τα στοιχεία σας**
+   ```
+   First Name: [Το όνομά σας]
+   Last Name: [Το επώνυμο σας]
+   Email: [Η email διεύθυνσή σας]
+   Password: [Ένας ασφαλής κωδικός]
+   Role: [Student/Teacher/Admin]
+   ```
+
+3. **Επιβεβαιώστε την εγγραφή**
+   - Κάντε κλικ στο "Register"
+   - Θα λάβετε επιβεβαίωση και θα συνδεθείτε αυτόματα
+
+### 💡 Συμβουλές για Ασφαλή Κωδικό
+- Χρησιμοποιήστε τουλάχιστον 8 χαρακτήρες
+- Συμπεριλάβετε γράμματα, αριθμούς και σύμβολα
+- Αποφύγετε προσωπικές πληροφορίες
+
+## 🔐 Σύνδεση στο Σύστημα
+
+### Σύνδεση με Υπάρχοντα Λογαριασμό
+1. **Επισκεφθείτε τη σελίδα σύνδεσης**
+   - Κάντε κλικ στο "Login" στην αρχική σελίδα
+
+2. **Εισάγετε τα στοιχεία σας**
+   ```
+   Email: [Η email διεύθυνσή σας]
+   Password: [Ο κωδικός σας]
+   ```
+
+3. **Συνδεθείτε**
+   - Κάντε κλικ στο "Login"
+   - Θα μεταφερθείτε στο Dashboard
+
+### 🔑 Ανάμνηση Κωδικού
+Εάν ξεχάσατε τον κωδικό σας:
+1. Επικοινωνήστε με τον διαχειριστή του συστήματος
+2. Ζητήστε επαναφορά κωδικού
+
+## 📊 Dashboard - Αρχική Σελίδα
+
+### Επισκόπηση Dashboard
+Μετά τη σύνδεση, θα δείτε το κύριο Dashboard με:
+
+#### 📈 Στατιστικά Προόδου
+- **Συνολικές Ώρες Εκμάθησης**: Χρόνος που αφιερώσατε
+- **Ολοκληρωμένα Modules**: Αριθμός modules που ολοκληρώσατε
+- **Μέσος Όρος Quizzes**: Μέση βαθμολογία στα τεστ
+- **Τρέχον Στρίμ**: Σειρά εκμάθησης
+
+#### 🎯 Προτάσεις Εκμάθησης
+- **Προτεινόμενα Modules**: Βάσει της προόδου σας
+- **Επόμενα Quizzes**: Τεστ που πρέπει να κάνετε
+- **Προσωπικές Προτάσεις**: Προσαρμοσμένες στο στυλ σας
+
+#### 📋 Γρήγορες Ενέργειες
+- **Συνέχιση Εκμάθησης**: Επιστροφή στο τελευταίο module
+- **Νέο Quiz**: Ξεκινήστε ένα νέο τεστ
+- **Προβολή Προόδου**: Δείτε αναλυτικά στατιστικά
+
+### 🧭 Πλοήγηση
+- **Sidebar**: Πρόσβαση σε όλες τις σελίδες
+- **Navbar**: Γρήγορη πρόσβαση στο προφίλ και αποσύνδεση
+- **Breadcrumbs**: Δείχνουν την τρέχουσα τοποθεσία σας
+
+## 📚 Εκμάθηση Modules
+
+### Εύρεση Modules
+1. **Επισκεφθείτε τη σελίδα "Modules"**
+   - Κάντε κλικ στο "Modules" στο sidebar
+
+2. **Περιήγηση στα Modules**
+   - **Φίλτρα**: Επιλέξτε κατηγορία, δυσκολία, διάρκεια
+   - **Αναζήτηση**: Βρείτε modules με λέξεις-κλειδιά
+   - **Ταξινόμηση**: Ταξινομήστε κατά δημοτικότητα, ημερομηνία, κλπ
+
+### 📖 Προβολή Module
+Κάθε module περιλαμβάνει:
+
+#### 📋 Πληροφορίες Module
+- **Τίτλος και Περιγραφή**: Σύντομη επισκόπηση
+- **Δυσκολία**: Beginner/Intermediate/Advanced
+- **Εκτιμώμενη Διάρκεια**: Χρόνος που απαιτείται
+- **Κατηγορία**: Τομέας γνώσης
+- **Tags**: Λέξεις-κλειδιά για αναζήτηση
+
+#### 🎯 Στόχοι Εκμάθησης
+- Λίστα με τους στόχους που θα πετύχετε
+- Προαπαιτούμενα γνώσεις
+- Αποτελέσματα μετά την ολοκλήρωση
+
+#### 📝 Περιεχόμενο
+- **Διαδραστικό Περιεχόμενο**: Κείμενο, εικόνες, βίντεο
+- **Παραδείγματα**: Πρακτικά παραδείγματα
+- **Ασκήσεις**: Διαδραστικές ασκήσεις
+
+### ✅ Ολοκλήρωση Module
+1. **Διαβάστε όλο το περιεχόμενο**
+2. **Ολοκληρώστε τις ασκήσεις**
+3. **Κάντε κλικ στο "Mark as Complete"**
+4. **Προχωρήστε στο επόμενο module**
+
+## 🧪 Quizzes - Τεστάρισμα
+
+### Εύρεση Quizzes
+1. **Επισκεφθείτε τη σελίδα "Quizzes"**
+   - Κάντε κλικ στο "Quizzes" στο sidebar
+
+2. **Επιλέξτε Quiz**
+   - **Διαθέσιμα Quizzes**: Λίστα με όλα τα τεστ
+   - **Φίλτρα**: Επιλέξτε module, δυσκολία, διάρκεια
+   - **Προτεινόμενα**: Βάσει της προόδου σας
+
+### 📝 Λήψη Quiz
+Πριν ξεκινήσετε ένα quiz:
+
+#### ℹ️ Πληροφορίες Quiz
+- **Τίτλος και Περιγραφή**: Τι θα ελεγχθεί
+- **Αριθμός Ερωτήσεων**: Πόσες ερωτήσεις περιλαμβάνει
+- **Χρονικό Όριο**: Χρόνος που διαθέτετε
+- **Προαπαιτούμενα**: Modules που πρέπει να έχετε ολοκληρώσει
+
+#### ⚙️ Ρυθμίσεις
+- **Λειτουργία Πρακτικής**: Χωρίς χρονικό όριο
+- **Λειτουργία Εξέτασης**: Με χρονικό όριο
+- **Εμφάνιση Απαντήσεων**: Μετά την ολοκλήρωση
+
+### 🎯 Εκτέλεση Quiz
+
+#### 📋 Τύποι Ερωτήσεων
+1. **Multiple Choice**: Επιλέξτε μία ή περισσότερες απαντήσεις
+2. **True/False**: Αληθές ή Ψευδές
+3. **Short Answer**: Σύντομη γραπτή απάντηση
+
+#### ⏱️ Χρονικό Όριο
+- **Timer**: Δείχνει τον υπόλοιπο χρόνο
+- **Προειδοποίηση**: 5 λεπτά πριν λήξει
+- **Αυτόματη Υποβολή**: Όταν λήξει ο χρόνος
+
+#### 📝 Απαντήσεις
+- **Προσωρινή Αποθήκευση**: Αποθηκεύονται αυτόματα
+- **Επιστροφή**: Μπορείτε να επιστρέψετε σε προηγούμενες ερωτήσεις
+- **Επισημάνσεις**: Σημειώστε ερωτήσεις για επανεξέταση
+
+### ✅ Υποβολή Quiz
+1. **Επιβεβαιώστε όλες τις απαντήσεις**
+2. **Κάντε κλικ στο "Submit Quiz"**
+3. **Επιβεβαιώστε την υποβολή**
+
+### 📊 Αποτελέσματα Quiz
+
+#### 🎯 Άμεσα Αποτελέσματα
+- **Σκορ**: Ποσοστό επιτυχίας
+- **Απαντήσεις**: Σωστές και λανθασμένες απαντήσεις
+- **Επεξήγηση**: Γιατί κάθε απάντηση είναι σωστή/λανθασμένη
+
+#### 📈 Στατιστικά
+- **Χρόνος**: Πόσο χρόνο αφιερώσατε
+- **Ακρίβεια**: Ποσοστό σωστών απαντήσεων
+- **Δυσκολία**: Επίπεδο δυσκολίας των ερωτήσεων
+
+#### 🔄 Επανάληψη
+- **Προβολή Απαντήσεων**: Δείτε όλες τις απαντήσεις
+- **Επανάληψη Quiz**: Κάντε το quiz ξανά
+- **Προχώρηση**: Συνεχίστε με το επόμενο module
+
+## 📈 Παρακολούθηση Προόδου
+
+### Επισκόπηση Προόδου
+Επισκεφθείτε τη σελίδα "Progress" για:
+
+#### 📊 Γενικά Στατιστικά
+- **Συνολική Πρόοδος**: Ποσοστό ολοκλήρωσης όλων των modules
+- **Ώρες Εκμάθησης**: Συνολικός χρόνος που αφιερώσατε
+- **Μέσος Όρος**: Μέση βαθμολογία σε όλα τα quizzes
+- **Στρίμ**: Τρέχουσα θέση σας
+
+#### 📚 Προοδος ανά Module
+- **Ολοκληρωμένα**: Modules που έχετε τελειώσει
+- **Σε Εξέλιξη**: Modules που ξεκινήσατε
+- **Μη Ξεκινημένα**: Modules που δεν έχετε αγγίξει
+
+#### 🎯 Προοδος ανά Κατηγορία
+- **Γραφήματα**: Οπτική αναπαράσταση της προόδου
+- **Συγκριτικά**: Με άλλους μαθητές
+- **Τάσεις**: Πώς εξελίσσεται η πρόοδός σας
+
+### 📋 Λεπτομερής Προοδος
+
+#### 📖 Modules
+- **Τίτλος Module**: Όνομα κάθε module
+- **Κατάσταση**: Not Started/In Progress/Completed
+- **Ημερομηνία Έναρξης**: Πότε ξεκινήσατε
+- **Ημερομηνία Ολοκλήρωσης**: Πότε τελειώσατε
+- **Χρόνος**: Πόσο χρόνο αφιερώσατε
+
+#### 🧪 Quizzes
+- **Τίτλος Quiz**: Όνομα κάθε quiz
+- **Σκορ**: Βαθμολογία που πήρατε
+- **Χρόνος**: Πόσο χρόνο χρειάστηκε
+- **Ημερομηνία**: Πότε το κάνατε
+- **Επανάληψη**: Πόσες φορές το επαναλάβατε
+
+#### 📈 Γραφήματα
+- **Γραμμικό Γράφημα**: Πρόοδος στον χρόνο
+- **Διαγράμματα Πίτας**: Κατανομή ανά κατηγορία
+- **Histogram**: Κατανομή βαθμολογιών
+
+### 🎯 Στόχοι και Επιτεύγματα
+
+#### 🏆 Badges
+- **Module Completion**: Για κάθε ολοκληρωμένο module
+- **Quiz Master**: Για υψηλές βαθμολογίες
+- **Consistency**: Για τακτική εκμάθηση
+- **Speed Learner**: Για γρήγορη ολοκλήρωση
+
+#### 📊 Στόχοι
+- **Ημερήσιοι Στόχοι**: Ώρες εκμάθησης ανά ημέρα
+- **Εβδομαδιαίοι Στόχοι**: Modules ανά εβδομάδα
+- **Μηνιαίοι Στόχοι**: Συνολική πρόοδος
+
+## 🎯 Προτάσεις Εκμάθησης
+
+### Επισκόπηση Προτάσεων
+Η σελίδα "Recommendations" παρέχει:
+
+#### 🧠 Προσαρμοσμένες Προτάσεις
+- **Βάσει Προόδου**: Τι έχετε ήδη μάθει
+- **Βάσει Επιδόσεων**: Πώς τα πάτε στα quizzes
+- **Βάσει Προτιμήσεων**: Τι σας αρέσει να μαθαίνετε
+
+#### 📚 Τύποι Προτάσεων
+1. **Modules**: Προτεινόμενα εκπαιδευτικά modules
+2. **Quizzes**: Τεστ που ταιριάζουν στο επίπεδό σας
+3. **Learning Paths**: Σειρά modules για συγκεκριμένο στόχο
+4. **Practice Exercises**: Εξασκηστικές ασκήσεις
+
+### 🎯 Αλγόριθμος Προτάσεων
+
+#### 📊 Παράγοντες
+- **Επίπεδο Δυσκολίας**: Beginner/Intermediate/Advanced
+- **Κατηγορία**: Τεχνολογία, Επιστήμη, Τέχνες, κλπ
+- **Στυλ Εκμάθησης**: Visual/Auditory/Kinesthetic
+- **Πρόοδος**: Τι έχετε ήδη ολοκληρώσει
+
+#### 🔄 Ενημέρωση Προτάσεων
+- **Real-time**: Ανανεώνονται καθώς μαθαίνετε
+- **Machine Learning**: Βελτιώνεται με την χρήση
+- **Collaborative Filtering**: Βάσει άλλων μαθητών
+
+### 📋 Χρήση Προτάσεων
+
+#### ✅ Ακολουθία Προτάσεων
+1. **Επιλέξτε μια πρόταση**
+2. **Διαβάστε την περιγραφή**
+3. **Ξεκινήστε το module/quiz**
+4. **Ολοκληρώστε το**
+5. **Λάβετε νέες προτάσεις**
+
+#### 🔄 Προσαρμογή Προτάσεων
+- **Like/Dislike**: Δείξτε τι σας αρέσει
+- **Feedback**: Δώστε ανατροφοδότηση
+- **Skip**: Παραλείψτε αν δεν σας ενδιαφέρει
+
+## 👤 Προφίλ Χρήστη
+
+### Επεξεργασία Προφίλ
+Επισκεφθείτε το "Profile" για:
+
+#### 📝 Βασικές Πληροφορίες
+- **Όνομα και Επώνυμο**: Επεξεργαστείτε τα στοιχεία σας
+- **Email**: Ενημερώστε την διεύθυνση email
+- **Avatar**: Προσθέστε φωτογραφία προφίλ
+
+#### 🎯 Προτιμήσεις Εκμάθησης
+- **Επίπεδο Δυσκολίας**: Beginner/Intermediate/Advanced
+- **Στυλ Εκμάθησης**: Visual/Auditory/Kinesthetic
+- **Κατηγορίες Ενδιαφέροντος**: Τι θέλετε να μάθετε
+
+#### 🔔 Ρυθμίσεις Ειδοποιήσεων
+- **Email Notifications**: Λάβετε ειδοποιήσεις στο email
+- **Reminders**: Υπενθυμίσεις για εκμάθηση
+- **Progress Updates**: Ενημερώσεις για την πρόοδό σας
+
+### 🔐 Ασφάλεια Λογαριασμού
+
+#### 🔑 Αλλαγή Κωδικού
+1. **Επισκεφθείτε το Profile**
+2. **Κάντε κλικ στο "Change Password"**
+3. **Εισάγετε τον τρέχοντα κωδικό**
+4. **Εισάγετε τον νέο κωδικό**
+5. **Επιβεβαιώστε τον νέο κωδικό**
+
+#### 📱 Διεύθυνση Email
+- **Επιβεβαίωση**: Επιβεβαιώστε τη διεύθυνση email
+- **Ενημέρωση**: Αλλάξτε την email διεύθυνση
+- **Ασφάλεια**: Χρησιμοποιείται για επαναφορά κωδικού
+
+### 📊 Στατιστικά Χρήστη
+
+#### 🎯 Συνολική Επισκόπηση
+- **Ημερομηνία Εγγραφής**: Πότε δημιουργήσατε τον λογαριασμό
+- **Συνολικές Συνδέσεις**: Πόσες φορές συνδεθήκατε
+- **Τελευταία Σύνδεση**: Πότε συνδεθήκατε τελευταία
+
+#### 📈 Επιδόσεις
+- **Μέσος Όρος**: Συνολική μέση βαθμολογία
+- **Ταχύτητα**: Μέσος χρόνος ανά module
+- **Συνεπές**: Πόσο τακτικά μαθαίνετε
+
+## ❓ Συχνές Ερωτήσεις
+
+### 🔧 Τεχνικά Προβλήματα
+
+#### Q: Δεν μπορώ να συνδεθώ
+**A:** Ελέγξτε:
+- Τη σωστή διεύθυνση email
+- Τον σωστό κωδικό
+- Τη σύνδεση στο διαδίκτυο
+- Αν ο browser είναι ενημερωμένος
+
+#### Q: Η εφαρμογή είναι αργή
+**A:** Δοκιμάστε:
+- Ανανέωση της σελίδας (F5)
+- Καθαρισμό cache του browser
+- Κλείσιμο άλλων tabs
+- Επιβεβαίωση σύνδεσης στο διαδίκτυο
+
+#### Q: Δεν αποθηκεύονται οι απαντήσεις
+**A:** Βεβαιωθείτε ότι:
+- Έχετε σύνδεση στο διαδίκτυο
+- Δεν έκλεισε το browser
+- Κάνετε κλικ στο "Save" ή "Submit"
+
+### 📚 Ερωτήσεις Εκμάθησης
+
+#### Q: Πώς επιλέγω τι να μάθω;
+**A:** Χρησιμοποιήστε:
+- Τις προτάσεις στο Dashboard
+- Τη σελίδα Modules με φίλτρα
+- Τις προτάσεις στην σελίδα Recommendations
+
+#### Q: Μπορώ να επιστρέψω σε προηγούμενο module;
+**A:** Ναι, μπορείτε να:
+- Επισκεφθείτε οποιοδήποτε module
+- Επανεξετάσετε το περιεχόμενο
+- Κάνετε ξανά τα quizzes
+
+#### Q: Πώς βελτιώνω τις βαθμολογίες μου;
+**A:** Δοκιμάστε:
+- Επανάληψη modules
+- Περισσότερη πρακτική με quizzes
+- Χρήση των προτάσεων του συστήματος
+- Τακτική εκμάθηση
+
+### 🎯 Προτάσεις Χρήσης
+
+#### 💡 Συμβουλές για Καλύτερη Εκμάθηση
+1. **Τακτικότητα**: Μαθαίνετε κάθε μέρα
+2. **Συγκέντρωση**: Αποφύγετε διαταραχές
+3. **Πρακτική**: Κάντε τα quizzes
+4. **Επανάληψη**: Επιστρέψτε σε δύσκολα θέματα
+
+#### 🎯 Στόχοι Εκμάθησης
+- **Καθημερινά**: 30-60 λεπτά εκμάθησης
+- **Εβδομαδιαία**: 1-2 modules
+- **Μηνιαία**: Επιθεώρηση προόδου
+
+#### 🔄 Επανάληψη και Ενίσχυση
+- **Εβδομαδιαία Επισκόπηση**: Δείτε τι μάθατε
+- **Μηνιαία Επιθεώρηση**: Επιστρέψτε σε παλιά θέματα
+- **Τριμηνιαία Αξιολόγηση**: Εκτιμήστε την πρόοδό σας
+
+---
+
+## 🎓 Συμπέρασμα
+
+Η **Adaptive E-Learning Platform** σας παρέχει:
+
+✅ **Προσαρμοσμένη Εμπειρία**: Το σύστημα προσαρμόζεται στις ανάγκες σας  
+✅ **Προσωπικοποιημένες Προτάσεις**: Λαμβάνετε προτάσεις βάσει της προόδου σας  
+✅ **Παρακολούθηση Προόδου**: Δείτε την εξέλιξή σας με αναλυτικά στατιστικά  
+✅ **Διαδραστικά Quizzes**: Ελέγξτε τις γνώσεις σας με διαδραστικά τεστ  
+✅ **Σύγχρονη Διεπαφή**: Εύκολη και διαισθητική χρήση  
+
+**Καλή εκμάθηση! 🚀** 

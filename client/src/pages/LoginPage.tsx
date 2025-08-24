@@ -41,8 +41,8 @@ export default function LoginPage() {
         // Transform user data to match frontend interface
         const user = {
           ...response.data.user,
-          id: response.data.user._id // Convert _id to id
-        };
+          id: response.data.user._id || response.data.user.id
+        } as any;
         
         // Update auth store
         login(user, response.data.tokens);

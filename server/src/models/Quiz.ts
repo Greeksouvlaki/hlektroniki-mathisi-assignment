@@ -1,10 +1,9 @@
 import mongoose, { Schema, Document } from 'mongoose';
-import { IQuiz, IQuestion } from '../types/index.js';
 import './Module.js';
 
-export interface IQuizDocument extends IQuiz, Document {}
+export interface IQuizDocument extends Document {}
 
-const questionSchema = new Schema<IQuestion>(
+const questionSchema = new Schema(
   {
     text: {
       type: String,
@@ -19,7 +18,7 @@ const questionSchema = new Schema<IQuestion>(
     options: {
       type: [String],
       validate: {
-        validator: function(this: IQuestion, options: string[]) {
+        validator: function(this: any, options: string[]) {
           if (this.type === 'multiple-choice' && (!options || options.length < 2)) {
             return false;
           }
@@ -55,7 +54,7 @@ const questionSchema = new Schema<IQuestion>(
   { _id: true }
 );
 
-const quizSchema = new Schema<IQuizDocument>(
+const quizSchema = new Schema(
   {
     title: {
       type: String,
@@ -88,7 +87,7 @@ const quizSchema = new Schema<IQuizDocument>(
       type: [questionSchema],
       required: [true, 'Questions are required'],
       validate: {
-        validator: function(questions: IQuestion[]) {
+        validator: function(questions: any[]) {
           return questions.length > 0;
         },
         message: 'Quiz must have at least one question'
@@ -119,13 +118,15 @@ const quizSchema = new Schema<IQuizDocument>(
 
 // Virtual for total points
 quizSchema.virtual('totalPoints').get(function() {
-  return this.questions ? this.questions.reduce((total, question) => total + question.points, 0) : 0;
+  const self = this as any;
+  return self.questions ? self.questions.reduce((total: number, question: any) => total + (question.points || 0), 0) : 0;
 });
 
 // Virtual for estimated duration
 quizSchema.virtual('estimatedDuration').get(function() {
+  const self = this as any;
   const baseTimePerQuestion = 2; // minutes
-  return this.questions ? this.questions.length * baseTimePerQuestion : 0;
+  return self.questions ? self.questions.length * baseTimePerQuestion : 0;
 });
 
 // Indexes for better query performance
@@ -137,24 +138,25 @@ quizSchema.index({ 'questions.difficulty': 1 });
 
 // Pre-save middleware to validate questions
 quizSchema.pre('save', function(next) {
-  if (this.questions.length === 0) {
+  const self = this as any;
+  if (!self.questions || self.questions.length === 0) {
     return next(new Error('Quiz must have at least one question'));
   }
   next();
 });
 
 // Static method to find active quizzes
-quizSchema.statics.findActive = function() {
+quizSchema.statics['findActive'] = function() {
   return this.find({ isActive: true }).populate('moduleId', 'title subject');
 };
 
 // Static method to find quizzes by module
-quizSchema.statics.findByModule = function(moduleId: string) {
+quizSchema.statics['findByModule'] = function(moduleId: string) {
   return this.find({ moduleId, isActive: true }).populate('moduleId', 'title subject');
 };
 
 // Static method to find quizzes by difficulty
-quizSchema.statics.findByDifficulty = function(difficulty: string) {
+quizSchema.statics['findByDifficulty'] = function(difficulty: string) {
   return this.find({ difficulty, isActive: true }).populate('moduleId', 'title subject');
 };
 

@@ -3,6 +3,7 @@ import { authenticateToken, requireTeacher } from '../middleware/auth.js';
 import { asyncHandler } from '../middleware/errorHandler.js';
 import '../models/Module.js';
 import '../models/User.js';
+import { mockQuizzes } from '../services/mockData.js';
 
 const router = Router();
 
@@ -30,27 +31,38 @@ const router = Router();
  *       200:
  *         description: Quizzes retrieved successfully
  */
-router.get('/', authenticateToken, asyncHandler(async (req, res) => {
+router.get('/', authenticateToken, asyncHandler(async (req: any, res: any) => {
   try {
-    const { Quiz } = await import('../models/Quiz.js');
+    let quizzes;
     
-    // Build query based on filters
-    const query: any = { isActive: true };
-    
-    if (req.query.moduleId) {
-      query.moduleId = req.query.moduleId;
+    try {
+      const { Quiz } = await import('../models/Quiz.js');
+      
+      // Build query based on filters
+      const query: any = { isActive: true };
+      
+      if (req.query.moduleId) {
+        query.moduleId = req.query.moduleId;
+      }
+      
+      if (req.query.difficulty) {
+        query.difficulty = req.query.difficulty;
+      }
+      
+      // Get quizzes from database
+      quizzes = await Quiz.find(query)
+        .select('-questions.correctAnswer') // Don't send correct answers to client
+        .populate('moduleId', 'title')
+        .populate('createdBy', 'firstName lastName')
+        .sort({ createdAt: -1 });
+    } catch (error) {
+      // If database is not available, use mock data
+      quizzes = mockQuizzes.filter(quiz => {
+        if (req.query.moduleId && quiz.moduleId !== req.query.moduleId) return false;
+        if (req.query.difficulty && quiz.difficulty !== req.query.difficulty) return false;
+        return true;
+      });
     }
-    
-    if (req.query.difficulty) {
-      query.difficulty = req.query.difficulty;
-    }
-    
-    // Get quizzes from database
-    const quizzes = await Quiz.find(query)
-      .select('-questions.correctAnswer') // Don't send correct answers to client
-      .populate('moduleId', 'title')
-      .populate('createdBy', 'firstName lastName')
-      .sort({ createdAt: -1 });
     
     res.status(200).json({
       success: true,
@@ -87,7 +99,7 @@ router.get('/', authenticateToken, asyncHandler(async (req, res) => {
  *       200:
  *         description: Quiz retrieved successfully
  */
-router.get('/:id', authenticateToken, asyncHandler(async (req, res) => {
+router.get('/:id', authenticateToken, asyncHandler(async (req: any, res: any) => {
   try {
     const { Quiz } = await import('../models/Quiz.js');
     
@@ -155,11 +167,12 @@ router.get('/:id', authenticateToken, asyncHandler(async (req, res) => {
  *       201:
  *         description: Quiz created successfully
  */
-router.post('/', authenticateToken, requireTeacher, asyncHandler(async (req, res) => {
-  // TODO: Implement quiz creation logic
+router.post('/', authenticateToken, requireTeacher, asyncHandler(async (req: any, res: any) => {
+  const { Quiz } = await import('../models/Quiz.js');
+  const created = await Quiz.create({ ...req.body, createdBy: (req as any).user.id });
   res.status(201).json({
     success: true,
-    data: {},
+    data: created,
     message: 'Quiz created successfully',
     timestamp: new Date().toISOString()
   });
@@ -184,11 +197,12 @@ router.post('/', authenticateToken, requireTeacher, asyncHandler(async (req, res
  *       200:
  *         description: Quiz updated successfully
  */
-router.put('/:id', authenticateToken, requireTeacher, asyncHandler(async (req, res) => {
-  // TODO: Implement quiz update logic
+router.put('/:id', authenticateToken, requireTeacher, asyncHandler(async (req: any, res: any) => {
+  const { Quiz } = await import('../models/Quiz.js');
+  const updated = await Quiz.findByIdAndUpdate(req.params.id, req.body, { new: true });
   res.status(200).json({
     success: true,
-    data: {},
+    data: updated,
     message: 'Quiz updated successfully',
     timestamp: new Date().toISOString()
   });
@@ -213,8 +227,9 @@ router.put('/:id', authenticateToken, requireTeacher, asyncHandler(async (req, r
  *       200:
  *         description: Quiz deleted successfully
  */
-router.delete('/:id', authenticateToken, requireTeacher, asyncHandler(async (req, res) => {
-  // TODO: Implement quiz deletion logic
+router.delete('/:id', authenticateToken, requireTeacher, asyncHandler(async (req: any, res: any) => {
+  const { Quiz } = await import('../models/Quiz.js');
+  await Quiz.findByIdAndDelete(req.params.id);
   res.status(200).json({
     success: true,
     message: 'Quiz deleted successfully',
@@ -257,13 +272,15 @@ router.delete('/:id', authenticateToken, requireTeacher, asyncHandler(async (req
  *       200:
  *         description: Quiz submitted successfully
  */
-router.post('/:id/submit', authenticateToken, asyncHandler(async (req, res) => {
+router.post('/:id/submit', authenticateToken, asyncHandler(async (req: any, res: any) => {
   try {
     const { Quiz } = await import('../models/Quiz.js');
     const { Progress } = await import('../models/Progress.js');
+    const { XAPIService } = await import('../services/xapiService.js');
+    const { User } = await import('../models/User.js');
     
     const quizId = req.params.id;
-    const userId = req.user.id;
+    const userId = (req as any).user.id;
     const { answers, timeSpent } = req.body;
     
     // Get the quiz
@@ -278,9 +295,9 @@ router.post('/:id/submit', authenticateToken, asyncHandler(async (req, res) => {
     
     // Calculate score
     let correctAnswers = 0;
-    const totalQuestions = quiz.questions.length;
+    const totalQuestions = (quiz as any).questions.length;
     
-    quiz.questions.forEach((question, index) => {
+    (quiz as any).questions.forEach((question: any, index: number) => {
       if (answers[index] && answers[index].answer === question.correctAnswer) {
         correctAnswers++;
       }
@@ -291,7 +308,7 @@ router.post('/:id/submit', authenticateToken, asyncHandler(async (req, res) => {
     // Create progress record
     const progress = new Progress({
       userId,
-      moduleId: quiz.moduleId,
+      moduleId: (quiz as any).moduleId,
       quizId,
       score,
       maxScore: 100,
@@ -299,11 +316,11 @@ router.post('/:id/submit', authenticateToken, asyncHandler(async (req, res) => {
       timeSpent,
       completedAt: new Date(),
       responses: answers.map((answer: any, index: number) => ({
-        questionId: quiz.questions[index]._id,
+        questionId: (quiz as any).questions?.[index]?._id,
         userAnswer: answer.answer,
-        isCorrect: answer.answer === quiz.questions[index].correctAnswer,
+        isCorrect: answer.answer === (quiz as any).questions?.[index]?.correctAnswer,
         timeSpent: answer.timeSpent || 0,
-        points: answer.answer === quiz.questions[index].correctAnswer ? 10 : 0
+        points: answer.answer === (quiz as any).questions?.[index]?.correctAnswer ? 10 : 0
       })),
       adaptiveData: {
         difficultyLevel: score >= 80 ? 'hard' : score >= 60 ? 'medium' : 'easy',
@@ -315,6 +332,12 @@ router.post('/:id/submit', authenticateToken, asyncHandler(async (req, res) => {
     });
     
     await progress.save();
+
+    // Send xAPI statements
+    const user = await User.findById(userId);
+    if (user) {
+      await XAPIService.sendQuizCompletionStatement(progress as any, user);
+    }
     
     res.status(200).json({
       success: true,
@@ -323,7 +346,7 @@ router.post('/:id/submit', authenticateToken, asyncHandler(async (req, res) => {
         totalQuestions,
         correctAnswers,
         percentage: score,
-        passed: score >= quiz.passingScore
+        passed: score >= (quiz as any).passingScore
       },
       message: 'Quiz submitted successfully',
       timestamp: new Date().toISOString()

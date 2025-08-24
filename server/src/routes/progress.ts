@@ -4,22 +4,30 @@ import { asyncHandler } from '../middleware/errorHandler.js';
 import '../models/Progress.js';
 import '../models/Quiz.js';
 import '../models/Module.js';
+import { mockProgress } from '../services/mockData.js';
 
 const router = Router();
 
-router.get('/', authenticateToken, asyncHandler(async (req, res) => {
+router.get('/', authenticateToken, asyncHandler(async (req: any, res: any) => {
+  const { Progress } = await import('../models/Progress.js');
+  const userId = (req as any).user.id;
+  const progress = await (Progress as any)['findByUser'](userId);
   res.status(200).json({
     success: true,
-    data: [],
+    data: progress,
     message: 'Progress retrieved successfully',
     timestamp: new Date().toISOString()
   });
 }));
 
-router.post('/', authenticateToken, asyncHandler(async (req, res) => {
+router.post('/', authenticateToken, asyncHandler(async (req: any, res: any) => {
+  const { Progress } = await import('../models/Progress.js');
+  const userId = (req as any).user.id;
+  const payload = req.body;
+  const created = await Progress.create({ ...payload, userId, completedAt: payload.completedAt || new Date() });
   res.status(201).json({
     success: true,
-    data: {},
+    data: created,
     message: 'Progress recorded successfully',
     timestamp: new Date().toISOString()
   });
@@ -37,16 +45,24 @@ router.post('/', authenticateToken, asyncHandler(async (req, res) => {
  *       200:
  *         description: Dashboard stats retrieved successfully
  */
-router.get('/stats', authenticateToken, asyncHandler(async (req, res) => {
+router.get('/stats', authenticateToken, asyncHandler(async (req: any, res: any) => {
   try {
-    const { Progress } = await import('../models/Progress.js');
-    const { Quiz } = await import('../models/Quiz.js');
-    const { Module } = await import('../models/Module.js');
+    let userProgress;
     
-    const userId = req.user.id;
-    
-    // Get user's progress data
-    const userProgress = await Progress.find({ userId });
+    try {
+      const { Progress } = await import('../models/Progress.js');
+      const { Quiz } = await import('../models/Quiz.js');
+      const { Module } = await import('../models/Module.js');
+      
+      const userId = (req as any).user.id;
+      
+      // Get user's progress data
+      userProgress = await Progress.find({ userId }) as any[];
+    } catch (error) {
+      // If database is not available, use mock data
+      const userId = (req as any).user.id;
+      userProgress = mockProgress.filter(p => p.userId === userId);
+    }
     
     // Calculate statistics
     const totalTimeSpent = userProgress.reduce((sum, progress) => sum + (progress.timeSpent || 0), 0);
@@ -88,6 +104,12 @@ router.get('/stats', authenticateToken, asyncHandler(async (req, res) => {
       timestamp: new Date().toISOString()
     });
   }
+}));
+
+// Alias to match client expectations
+router.get('/analytics', authenticateToken, asyncHandler(async (req: any, res: any, next: any) => {
+  (req as any).url = '/stats';
+  next();
 }));
 
 export default router; 

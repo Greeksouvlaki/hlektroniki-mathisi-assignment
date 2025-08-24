@@ -1,402 +1,308 @@
-# Frequently Asked Questions (FAQ)
-
-## General Questions
-
-### What is the Adaptive E-Learning Platform?
-
-The Adaptive E-Learning Platform is a modern web application that provides personalized learning experiences. It adapts content difficulty, learning paths, and recommendations based on individual student performance, response times, and mastery levels.
-
-### How does adaptive learning work?
-
-The platform uses sophisticated algorithms to:
-- Track your performance on quizzes and modules
-- Analyze response times and accuracy
-- Calculate your mastery level and confidence scores
-- Recommend content at the optimal difficulty level
-- Adjust learning paths based on your progress
-
-### What subjects are available?
-
-The platform supports any subject matter. Content is organized by:
-- **Subject**: Mathematics, Science, Programming, Languages, etc.
-- **Difficulty**: Beginner, Intermediate, Advanced
-- **Type**: Modules (learning content) and Quizzes (assessments)
-
-## Account & Registration
-
-### How do I create an account?
-
-1. Click "Sign Up" or "Register" on the homepage
-2. Fill in your information (name, email, password)
-3. Choose your role (Student or Instructor)
-4. Verify your email (if required)
-5. Start learning!
-
-### Can I change my password?
-
-Yes! You can change your password in your Profile Settings:
-1. Go to Profile → Settings
-2. Click "Change Password"
-3. Enter your current password and new password
-4. Save changes
-
-### I forgot my password. How do I reset it?
-
-1. Click "Forgot Password?" on the login page
-2. Enter your email address
-3. Check your email for reset instructions
-4. Click the reset link and create a new password
-
-### Can I delete my account?
-
-Currently, account deletion is handled by contacting support. We're working on adding self-service account deletion.
-
-## Learning & Content
-
-### How do I start learning?
-
-1. **Browse Modules**: Visit the Modules section to see available content
-2. **Take Recommendations**: Check your dashboard for personalized recommendations
-3. **Follow Learning Path**: Use the adaptive learning path for structured progression
-4. **Practice with Quizzes**: Test your knowledge with quizzes
-
-### What types of content are available?
-
-- **Text Content**: Written explanations and concepts
-- **Video Lessons**: Visual and audio learning
-- **Interactive Exercises**: Hands-on practice
-- **Quizzes**: Multiple choice, true/false, fill-in-the-blank, essay questions
-- **Assessments**: End-of-module tests
-
-### How long does it take to complete a module?
-
-Module duration varies:
-- **Beginner**: 15-30 minutes
-- **Intermediate**: 30-60 minutes  
-- **Advanced**: 60-120 minutes
-
-Estimated duration is shown on each module card.
-
-### Can I skip modules?
-
-Yes, but it's not recommended. The adaptive system works best when you follow the recommended learning path. Skipping may result in:
-- Missing foundational concepts
-- Suboptimal difficulty adjustments
-- Lower overall performance
-
-### How do I track my progress?
-
-Your progress is automatically tracked:
-- **Dashboard**: Overview of completed modules/quizzes
-- **Progress Page**: Detailed analytics and charts
-- **Profile**: Statistics and achievements
-- **Module Progress**: Visual progress bars within modules
-
-## Quizzes & Assessments
-
-### How do quizzes work?
-
-1. **Start Quiz**: Click on a quiz from your dashboard or module
-2. **Answer Questions**: Navigate through questions using Previous/Next
-3. **Submit**: Review your answers and submit
-4. **Get Results**: See your score and review explanations
-
-### What types of questions are there?
-
-- **Multiple Choice**: Select the best answer from options
-- **True/False**: Determine if statements are correct
-- **Fill-in-the-Blank**: Complete missing information
-- **Essay**: Provide detailed written responses
-
-### Can I retake quizzes?
-
-Yes, you can retake quizzes. However:
-- Your best score is recorded
-- The system tracks attempts for adaptive adjustments
-- Some quizzes may have attempt limits
-
-### How is my score calculated?
-
-Scores are calculated based on:
-- **Correct Answers**: Percentage of correct responses
-- **Time Spent**: Efficiency in answering
-- **Attempts**: Number of attempts taken
-- **Difficulty**: Performance relative to question difficulty
-
-### What is a passing score?
-
-Passing scores vary by quiz (typically 70-80%). You can see the passing score before starting each quiz.
-
-## Adaptive Features
-
-### How does the difficulty adjustment work?
-
-The system adjusts difficulty based on:
-- **Accuracy**: How often you answer correctly
-- **Response Time**: How quickly you answer
-- **Consistency**: Performance across multiple questions
-- **Mastery Level**: Overall understanding of topics
-
-### What is a mastery level?
-
-Mastery level (0-1) indicates your understanding:
-- **0.0-0.3**: Beginner level
-- **0.3-0.7**: Intermediate level  
-- **0.7-1.0**: Advanced level
-
-### How are recommendations generated?
-
-Recommendations are based on:
-- **Current Mastery**: Your skill level in each subject
-- **Learning History**: What you've completed
-- **Performance Patterns**: How you learn best
-- **Prerequisites**: Required knowledge for advanced topics
-
-### Can I override the adaptive system?
-
-Yes, you can:
-- **Choose Difficulty**: Select beginner/intermediate/advanced content
-- **Skip Recommendations**: Browse all available content
-- **Set Preferences**: Adjust learning style and difficulty preferences
-
-## Technical Issues
-
-### The platform is slow. What should I do?
-
-1. **Check Internet**: Ensure stable internet connection
-2. **Clear Cache**: Clear browser cache and cookies
-3. **Update Browser**: Use the latest version of Chrome, Firefox, or Safari
-4. **Contact Support**: If issues persist
-
-### I can't log in. What's wrong?
-
-Common login issues:
-- **Wrong Password**: Use password reset if needed
-- **Account Locked**: Too many failed attempts
-- **Browser Issues**: Try a different browser
-- **Network Problems**: Check your internet connection
-
-### Videos won't play. How do I fix this?
-
-1. **Check Browser**: Ensure HTML5 video support
-2. **Update Flash**: If using older content
-3. **Check Bandwidth**: Ensure sufficient internet speed
-4. **Try Different Browser**: Some browsers handle video better
-
-### I lost my progress. What happened?
-
-Progress is automatically saved. If you see missing progress:
-1. **Refresh Page**: Sometimes data needs to reload
-2. **Check Account**: Ensure you're logged into the correct account
-3. **Contact Support**: We can restore your progress
-
-## Privacy & Security
-
-### Is my data secure?
-
-Yes! We use industry-standard security:
-- **Encryption**: All data is encrypted in transit and at rest
-- **Authentication**: Secure JWT token-based authentication
-- **Privacy**: We don't sell or share your personal data
-- **Compliance**: Follows data protection regulations
-
-### What data do you collect?
-
-We collect:
-- **Account Information**: Name, email, role
-- **Learning Data**: Progress, scores, time spent
-- **Usage Analytics**: How you interact with content
-- **Technical Data**: Browser, device, performance metrics
-
-### Can I export my data?
-
-Yes! You can export your learning data:
-1. Go to Profile → Settings
-2. Click "Export Data"
-3. Choose what to export (progress, certificates, etc.)
-4. Download your data
-
-### How do you use my learning data?
-
-We use your data to:
-- **Personalize Content**: Adapt difficulty and recommendations
-- **Improve Platform**: Enhance features and content
-- **Track Progress**: Show your learning journey
-- **Generate Reports**: Provide insights and analytics
-
-## Support & Help
-
-### How do I get help?
-
-Multiple support options:
-- **Help Center**: Check this FAQ and documentation
-- **Contact Form**: Submit a support ticket
-- **Email**: support@adaptive-elearning.com
-- **Live Chat**: Available during business hours
-
-### What are your support hours?
-
-- **Monday-Friday**: 9 AM - 6 PM EST
-- **Weekends**: 10 AM - 4 PM EST
-- **Holidays**: Limited support available
-
-### Can I request new features?
-
-Yes! We welcome feature requests:
-1. **Feedback Form**: Submit via the platform
-2. **Email**: features@adaptive-elearning.com
-3. **Community Forum**: Discuss with other users
-
-### How do I report bugs?
-
-To report bugs:
-1. **Include Details**: Describe what happened
-2. **Screenshots**: Add visual evidence if possible
-3. **Steps to Reproduce**: Help us recreate the issue
-4. **Browser/Device**: Include technical details
-
-## Billing & Subscriptions
-
-### Is the platform free?
-
-We offer:
-- **Free Tier**: Limited access to basic features
-- **Premium**: Full access to all features
-- **Institutional**: Custom pricing for schools/organizations
-
-### What's included in the free tier?
-
-Free tier includes:
-- **Basic Modules**: Limited selection of content
-- **Simple Quizzes**: Basic assessments
-- **Progress Tracking**: Basic analytics
-- **Community Support**: Forum and documentation
-
-### How do I upgrade to premium?
-
-1. **Go to Settings**: Click on your profile
-2. **Choose Plan**: Select premium subscription
-3. **Payment**: Enter payment information
-4. **Activate**: Immediate access to premium features
-
-### Can I cancel my subscription?
-
-Yes, you can cancel anytime:
-1. **Go to Billing**: In your account settings
-2. **Cancel Subscription**: Click cancel
-3. **Confirm**: Your access continues until the end of the billing period
-
-### Do you offer refunds?
-
-We offer a 30-day money-back guarantee for new subscriptions. Contact support for refund requests.
-
-## Mobile & Offline
-
-### Is there a mobile app?
-
-Currently, the platform is web-based and works on mobile browsers. We're developing native mobile apps for iOS and Android.
-
-### Can I use the platform offline?
-
-Limited offline functionality is available:
-- **Download Content**: Save modules for offline viewing
-- **Sync Progress**: Upload when back online
-- **Offline Quizzes**: Take quizzes without internet
-
-### Which browsers are supported?
-
-Supported browsers:
-- **Chrome**: Version 90+
-- **Firefox**: Version 88+
-- **Safari**: Version 14+
-- **Edge**: Version 90+
-
-### What devices work best?
-
-Recommended devices:
-- **Desktop**: Full experience with all features
-- **Tablet**: Good experience with touch support
-- **Mobile**: Responsive design, some limitations
-
-## Learning Analytics
-
-### What analytics are available?
-
-Available analytics:
-- **Progress Overview**: Completion rates and scores
-- **Time Tracking**: Time spent on different topics
-- **Performance Trends**: Improvement over time
-- **Learning Patterns**: How you learn best
-- **Recommendations**: Why content is suggested
-
-### How accurate are the analytics?
-
-Analytics are based on:
-- **Real-time Data**: Live tracking of your activity
-- **Statistical Models**: Advanced algorithms for insights
-- **Continuous Learning**: System improves over time
-- **User Feedback**: Refined based on user input
-
-### Can I share my progress with others?
-
-Yes, you can share:
-- **Certificates**: Download and share completion certificates
-- **Progress Reports**: Generate and share detailed reports
-- **Social Media**: Share achievements on social platforms
-- **Instructors**: Grant access to teachers/trainers
-
-### How do I interpret my learning analytics?
-
-Key metrics to understand:
-- **Mastery Level**: Your current skill level (0-1)
-- **Confidence Score**: How certain the system is about your level
-- **Learning Velocity**: How quickly you're progressing
-- **Strengths/Weaknesses**: Areas you excel or need work
-
-## Advanced Features
-
-### What is xAPI integration?
-
-xAPI (Experience API) tracks detailed learning activities:
-- **Learning Records**: Comprehensive activity tracking
-- **Interoperability**: Works with other learning systems
-- **Advanced Analytics**: Detailed insights into learning behavior
-- **Compliance**: Meets industry standards
-
-### How do learning paths work?
-
-Learning paths are:
-- **Adaptive**: Adjust based on your performance
-- **Prerequisite-based**: Ensure you have required knowledge
-- **Optimized**: Recommend the most efficient route
-- **Flexible**: Allow customization and overrides
-
-### What are confidence scores?
-
-Confidence scores indicate:
-- **System Certainty**: How sure the system is about your level
-- **Data Quality**: Based on amount and consistency of data
-- **Recommendation Reliability**: Higher confidence = better recommendations
-- **Learning Stability**: Consistent performance increases confidence
-
-### How do I become an instructor?
-
-To become an instructor:
-1. **Register**: Create an account with instructor role
-2. **Verification**: Complete instructor verification process
-3. **Training**: Complete instructor orientation
-4. **Approval**: Wait for admin approval
-5. **Start Creating**: Begin creating content and courses
+# ❓ Συχνές Ερωτήσεις (FAQ) - Adaptive E-Learning Platform
+
+## 🔧 Τεχνικά Προβλήματα
+
+### Q: Δεν μπορώ να συνδεθώ στην εφαρμογή
+**A:** Δοκιμάστε τα εξής βήματα:
+1. Ελέγξτε αν έχετε σύνδεση στο διαδίκτυο
+2. Βεβαιωθείτε ότι χρησιμοποιείτε τη σωστή διεύθυνση email
+3. Επιβεβαιώστε ότι ο κωδικός είναι σωστός
+4. Δοκιμάστε να καθαρίσετε το cache του browser
+5. Επικοινωνήστε με τον διαχειριστή αν το πρόβλημα παραμένει
+
+### Q: Η εφαρμογή είναι πολύ αργή
+**A:** Για καλύτερη απόδοση:
+1. Κλείστε άλλες tabs και εφαρμογές
+2. Καθαρίστε το cache του browser
+3. Επιβεβαιώστε ότι έχετε σταθερή σύνδεση στο διαδίκτυο
+4. Δοκιμάστε διαφορετικό browser
+5. Επικοινωνήστε με την τεχνική υποστήριξη
+
+### Q: Δεν φορτώνουν τα quizzes
+**A:** Ελέγξτε:
+1. Αν ο backend server τρέχει (port 3000)
+2. Αν έχετε σύνδεση στο διαδίκτυο
+3. Αν υπάρχουν quizzes στη βάση δεδομένων
+4. Τα logs του browser για σφάλματα
+
+### Q: Δεν αποθηκεύονται οι απαντήσεις μου
+**A:** Βεβαιωθείτε ότι:
+1. Έχετε σύνδεση στο διαδίκτυο
+2. Δεν έκλεισε το browser κατά τη διάρκεια του quiz
+3. Κάνετε κλικ στο "Submit" ή "Save"
+4. Περιμένετε να ολοκληρωθεί η αποθήκευση
+
+### Q: Εμφανίζεται σφάλμα "Connection Refused"
+**A:** Αυτό σημαίνει ότι ο backend server δεν τρέχει:
+1. Επιβεβαιώστε ότι ο server τρέχει στο port 3000
+2. Εκκινήστε τον server με `npm run dev` στον φάκελο server
+3. Ελέγξτε τα logs για σφάλματα
+
+## 👤 Λογαριασμοί και Ασφάλεια
+
+### Q: Πώς αλλάζω τον κωδικό μου;
+**A:** Για αλλαγή κωδικού:
+1. Επισκεφθείτε το "Profile" στο μενού
+2. Κάντε κλικ στο "Change Password"
+3. Εισάγετε τον τρέχοντα κωδικό
+4. Εισάγετε τον νέο κωδικό δύο φορές
+5. Κάντε κλικ στο "Update Password"
+
+### Q: Ξέχασα τον κωδικό μου
+**A:** Επικοινωνήστε με:
+1. Τον διαχειριστή του συστήματος
+2. Την τεχνική υποστήριξη
+3. Ζητήστε επαναφορά κωδικού
+
+### Q: Πώς αλλάζω το email μου;
+**A:** Για αλλαγή email:
+1. Επισκεφθείτε το "Profile"
+2. Επεξεργαστείτε το πεδίο "Email"
+3. Αποθηκεύστε τις αλλαγές
+4. Επιβεβαιώστε το νέο email
+
+### Q: Πώς διαγράφω τον λογαριασμό μου;
+**A:** Για διαγραφή λογαριασμού:
+1. Επικοινωνήστε με τον διαχειριστή
+2. Ζητήστε διαγραφή του λογαριασμού
+3. Παρέχετε επιβεβαίωση ταυτότητας
+
+## 📚 Εκμάθηση και Modules
+
+### Q: Πώς βρίσκω modules που με ενδιαφέρουν;
+**A:** Χρησιμοποιήστε:
+1. Τη σελίδα "Modules" με φίλτρα
+2. Τη λειτουργία αναζήτησης
+3. Τις προτάσεις στο Dashboard
+4. Τις κατηγορίες για περιήγηση
+
+### Q: Μπορώ να επιστρέψω σε προηγούμενο module;
+**A:** Ναι, μπορείτε να:
+1. Επισκεφθείτε οποιοδήποτε module
+2. Επανεξετάσετε το περιεχόμενο
+3. Κάνετε ξανά τα quizzes
+4. Ενημερώσετε την πρόοδό σας
+
+### Q: Πώς ξέρω τι πρέπει να μάθω μετά;
+**A:** Το σύστημα σας καθοδηγεί με:
+1. Προτάσεις στο Dashboard
+2. Προτεινόμενα modules
+3. Learning paths
+4. Προτάσεις βάσει προόδου
+
+### Q: Μπορώ να παραλείψω ένα module;
+**A:** Ναι, αλλά:
+1. Μπορεί να χρειαστείτε τις γνώσεις για επόμενα modules
+2. Το σύστημα θα σας προτείνει να το ολοκληρώσετε
+3. Μπορείτε να επιστρέψετε αργότερα
+
+## 🧪 Quizzes και Τεστάρισμα
+
+### Q: Πόσες φορές μπορώ να κάνω ένα quiz;
+**A:** Μπορείτε να κάνετε quizzes:
+1. Απεριόριστες φορές
+2. Κάθε προσπάθεια αποθηκεύεται
+3. Βλέπετε τη βελτίωσή σας
+4. Το σύστημα προσαρμόζεται
+
+### Q: Τι γίνεται αν χάσω τη σύνδεση κατά τη διάρκεια quiz;
+**A:** Το σύστημα:
+1. Αποθηκεύει αυτόματα τις απαντήσεις
+2. Επιτρέπει να συνεχίσετε όπου σταματήσατε
+3. Διατηρεί τον χρόνο που απομένει
+4. Προσφέρει επαναφορά
+
+### Q: Μπορώ να δω τις σωστές απαντήσεις;
+**A:** Μετά την ολοκλήρωση του quiz:
+1. Βλέπετε όλες τις απαντήσεις
+2. Δείχνονται οι σωστές απαντήσεις
+3. Παρέχεται επεξήγηση
+4. Μπορείτε να επαναλάβετε το quiz
+
+### Q: Πώς υπολογίζεται η βαθμολογία;
+**A:** Η βαθμολογία βασίζεται σε:
+1. Αριθμό σωστών απαντήσεων
+2. Χρόνο που αφιερώσατε
+3. Δυσκολία των ερωτήσεων
+4. Τύπο ερωτήσεων
+
+## 📊 Προοδος και Στατιστικά
+
+### Q: Πώς βλέπω την πρόοδό μου;
+**A:** Επισκεφθείτε:
+1. Το "Dashboard" για επισκόπηση
+2. Τη σελίδα "Progress" για λεπτομέρειες
+3. Τα στατιστικά ανά module
+4. Τα γραφήματα εξέλιξης
+
+### Q: Πώς βελτιώνω τις βαθμολογίες μου;
+**A:** Για καλύτερες βαθμολογίες:
+1. Επανεξετάστε δύσκολα modules
+2. Κάντε περισσότερα quizzes
+3. Χρησιμοποιήστε τις προτάσεις του συστήματος
+4. Μαθαίνετε τακτικά
+
+### Q: Μπορώ να συγκριθώ με άλλους μαθητές;
+**A:** Το σύστημα παρέχει:
+1. Συγκριτικά στατιστικά
+2. Τάξεις και rankings
+3. Μέσους όρους κατηγορίας
+4. Προσωπικά επιτεύγματα
+
+### Q: Πώς λειτουργεί ο προσαρμοστικός αλγόριθμος;
+**A:** Ο αλγόριθμος:
+1. Αναλύει την πρόοδό σας
+2. Προσαρμόζει τη δυσκολία
+3. Προτείνει κατάλληλο περιεχόμενο
+4. Ενημερώνεται συνεχώς
+
+## 🎯 Προτάσεις και Προσωπικοποίηση
+
+### Q: Πώς λειτουργούν οι προτάσεις;
+**A:** Οι προτάσεις βασίζονται σε:
+1. Την πρόοδό σας
+2. Τις βαθμολογίες σας
+3. Τις προτιμήσεις σας
+4. Τα στυλ εκμάθησής σας
+
+### Q: Μπορώ να αλλάξω τις προτιμήσεις μου;
+**A:** Ναι, στο "Profile":
+1. Επεξεργαστείτε το επίπεδο δυσκολίας
+2. Αλλάξτε το στυλ εκμάθησης
+3. Επιλέξτε κατηγορίες ενδιαφέροντος
+4. Αποθηκεύστε τις αλλαγές
+
+### Q: Γιατί βλέπω συγκεκριμένες προτάσεις;
+**A:** Οι προτάσεις προσαρμόζονται σε:
+1. Τι έχετε ήδη μάθει
+2. Πώς τα πάτε στα quizzes
+3. Τι σας αρέσει να μαθαίνετε
+4. Την ταχύτητα εκμάθησής σας
+
+### Q: Μπορώ να παραλείψω προτάσεις;
+**A:** Ναι, μπορείτε να:
+1. Κάνετε κλικ στο "Skip"
+2. Επιλέξτε διαφορετικό περιεχόμενο
+3. Αναζητήσετε αυτό που θέλετε
+4. Χρησιμοποιήσετε τα φίλτρα
+
+## 🔔 Ειδοποιήσεις και Ρυθμίσεις
+
+### Q: Πώς αλλάζω τις ρυθμίσεις ειδοποιήσεων;
+**A:** Στο "Profile":
+1. Επιλέξτε "Notifications"
+2. Ενεργοποιήστε/απενεργοποιήστε ειδοποιήσεις
+3. Επιλέξτε τύπους ειδοποιήσεων
+4. Αποθηκεύστε τις ρυθμίσεις
+
+### Q: Λαμβάνω πολλές ειδοποιήσεις
+**A:** Μπορείτε να:
+1. Απενεργοποιήσετε ειδοποιήσεις
+2. Επιλέξτε λιγότερους τύπους
+3. Ρυθμίσετε τη συχνότητα
+4. Επικοινωνήστε με την υποστήριξη
+
+### Q: Πώς αλλάζω τη γλώσσα της εφαρμογής;
+**A:** Για αλλαγή γλώσσας:
+1. Επισκεφθείτε το "Profile"
+2. Επιλέξτε "Language"
+3. Επιλέξτε τη γλώσσα σας
+4. Αποθηκεύστε τις ρυθμίσεις
+
+## 📱 Χρήση σε Διαφορετικές Συσκευές
+
+### Q: Λειτουργεί η εφαρμογή στο κινητό;
+**A:** Ναι, η εφαρμογή είναι:
+1. Responsive για όλες τις συσκευές
+2. Βελτιστοποιημένη για κινητά
+3. Συμβατή με όλους τους browsers
+4. Προσαρμοσμένη για touch screens
+
+### Q: Μπορώ να συνεχίσω από διαφορετική συσκευή;
+**A:** Ναι, η πρόοδός σας:
+1. Αποθηκεύεται στο cloud
+2. Συγχρονίζεται αυτόματα
+3. Είναι διαθέσιμη παντού
+4. Απαιτεί σύνδεση στο διαδίκτυο
+
+### Q: Πώς βελτιώνω την απόδοση στο κινητό;
+**A:** Για καλύτερη απόδοση:
+1. Χρησιμοποιήστε WiFi
+2. Κλείστε άλλες εφαρμογές
+3. Καθαρίστε το cache
+4. Ενημερώστε τον browser
+
+## 🆘 Υποστήριξη και Επικοινωνία
+
+### Q: Πού μπορώ να βρω βοήθεια;
+**A:** Για βοήθεια:
+1. Επισκεφθείτε το "Help" στο μενού
+2. Δείτε το "User Guide"
+3. Επικοινωνήστε με την υποστήριξη
+4. Ελέγξτε αυτό το FAQ
+
+### Q: Πώς αναφέρω ένα bug;
+**A:** Για αναφορά bugs:
+1. Επικοινωνήστε με την τεχνική υποστήριξη
+2. Παρέχετε λεπτομέρειες για το πρόβλημα
+3. Συμπεριλάβετε screenshots αν χρειάζεται
+4. Περιγράψτε τα βήματα που ακολουθήσατε
+
+### Q: Μπορώ να προτείνω νέες λειτουργίες;
+**A:** Ναι, μπορείτε να:
+1. Επικοινωνήσετε με την ομάδα ανάπτυξης
+2. Συμπληρώσετε φόρμα προτάσεων
+3. Συμμετέχετε σε surveys
+4. Παρέχετε feedback
+
+### Q: Πώς επικοινωνώ με τον διαχειριστή;
+**A:** Για επικοινωνία:
+1. Χρησιμοποιήστε τη φόρμα επικοινωνίας
+2. Στείλτε email στη διεύθυνση υποστήριξης
+3. Χρησιμοποιήστε το chat support
+4. Καλέστε τη γραμμή υποστήριξης
+
+## 🔒 Ασφάλεια και Προστασία Δεδομένων
+
+### Q: Είναι ασφαλή τα δεδομένα μου;
+**A:** Ναι, το σύστημα:
+1. Χρησιμοποιεί κρυπτογράφηση
+2. Ακολουθεί GDPR
+3. Προστατεύει την ιδιωτικότητα
+4. Κάνει regular backups
+
+### Q: Ποιος έχει πρόσβαση στα δεδομένα μου;
+**A:** Πρόσβαση έχουν μόνο:
+1. Εσείς (ο ιδιοκτήτης του λογαριασμού)
+2. Διαχειριστές του συστήματος (περιορισμένη)
+3. Τεχνική υποστήριξη (μόνο για troubleshooting)
+
+### Q: Μπορώ να εξάγω τα δεδομένα μου;
+**A:** Ναι, μπορείτε να:
+1. Ζητήσετε export των δεδομένων σας
+2. Λάβετε τα δεδομένα σε μηχανικά αναγνώσιμη μορφή
+3. Επικοινωνήστε με την υποστήριξη για το αίτημα
+
+### Q: Πώς διαγράφονται τα δεδομένα μου;
+**A:** Τα δεδομένα διαγράφονται:
+1. Μετά από αίτημα διαγραφής λογαριασμού
+2. Μετά από συγκεκριμένη περίοδο αδράνειας
+3. Σύμφωνα με την πολιτική διατήρησης
+4. Μετά από νομική απαίτηση
 
 ---
 
-## Still Have Questions?
+## 📞 Επικοινωνία
 
-If you couldn't find the answer here, please contact our support team:
+Για επιπλέον ερωτήσεις ή βοήθεια:
 
-- **Email**: support@adaptive-elearning.com
-- **Phone**: +1 (555) 123-4567
-- **Live Chat**: Available on the platform
-- **Help Center**: Comprehensive documentation and guides
+- 📧 **Email:** support@adaptive-elearning.com
+- 📱 **Τηλέφωνο:** +30 210 1234567
+- 💬 **Chat Support:** Διαθέσιμο στην εφαρμογή
+- 📖 **Documentation:** [docs/](docs/)
 
-We're here to help you succeed in your learning journey! 
+**Ώρες Λειτουργίας:** Δευτέρα - Παρασκευή, 9:00 - 18:00 (EET)
+
+---
+
+*Τελευταία ενημέρωση: Ιούλιος 2024* 

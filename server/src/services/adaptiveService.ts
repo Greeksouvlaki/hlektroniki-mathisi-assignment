@@ -28,7 +28,7 @@ export class AdaptiveService {
   static async getAdaptiveRecommendation(userId: string): Promise<IAdaptiveRecommendation> {
     try {
       // Get user's recent progress
-      const recentProgress = await Progress.findRecent(userId, 20);
+      const recentProgress = await (Progress as any)['findRecent'](userId, 20);
       
       if (recentProgress.length === 0) {
         // New user - recommend entry-level modules
@@ -61,15 +61,17 @@ export class AdaptiveService {
    * Calculate user learning profile based on performance data
    */
   private static async calculateUserProfile(userId: string, recentProgress: IProgress[]): Promise<IUserProfile & { confidenceScore: number; learningPath: string[] }> {
-    const totalAttempts = recentProgress.length;
-    const totalScore = recentProgress.reduce((sum, progress) => sum + progress.percentage, 0);
+    const safeProgress = Array.isArray(recentProgress) ? recentProgress : [];
+    const totalAttempts = safeProgress.length || 1; // avoid division by zero
+    const totalScore = safeProgress.reduce((sum, progress) => sum + (progress.percentage || 0), 0);
     const averageScore = totalScore / totalAttempts;
-    
-    const totalTimeSpent = recentProgress.reduce((sum, progress) => sum + progress.timeSpent, 0);
+
+    const totalTimeSpent = safeProgress.reduce((sum, progress) => sum + (progress.timeSpent || 0), 0);
     const averageResponseTime = totalTimeSpent / totalAttempts;
-    
-    const successRate = recentProgress.filter(p => p.percentage >= 70).length / totalAttempts;
-    
+
+    const successes = safeProgress.filter(p => (p.percentage || 0) >= 70).length;
+    const successRate = successes / totalAttempts;
+
     // Calculate mastery level based on recent performance
     const masteryLevel = this.calculateMasteryLevel(averageScore, successRate, averageResponseTime);
     
@@ -83,7 +85,7 @@ export class AdaptiveService {
     const learningPath = await this.generateLearningPath(userId, masteryLevel);
     
     // Calculate current streak
-    const currentStreak = this.calculateCurrentStreak(recentProgress);
+    const currentStreak = this.calculateCurrentStreak(safeProgress);
     
     return {
       userId,
@@ -91,7 +93,10 @@ export class AdaptiveService {
       preferredDifficulty,
       averageResponseTime,
       successRate,
-      completedModules: recentProgress.map(p => p.moduleId.toString()),
+      completedModules: safeProgress
+        .map(p => (p as any).moduleId)
+        .filter((id: any) => !!id)
+        .map((id: any) => id.toString()),
       currentStreak,
       totalStudyTime: totalTimeSpent,
       confidenceScore,
@@ -197,7 +202,7 @@ export class AdaptiveService {
     userProfile: IUserProfile
   ): Promise<Partial<IAdaptiveRecommendation>> {
     // Find modules matching the difficulty level
-    const availableModules = await Module.findByDifficulty(difficultyLevel);
+    const availableModules = await (Module as any)['findByDifficulty'](difficultyLevel);
     
     // Filter out already completed modules
     const completedModuleIds = userProfile.completedModules;
@@ -208,7 +213,7 @@ export class AdaptiveService {
     if (uncompletedModules.length === 0) {
       // All modules at this level completed, try next difficulty
       const nextDifficulty = this.increaseDifficulty(difficultyLevel);
-      const nextLevelModules = await Module.findByDifficulty(nextDifficulty);
+      const nextLevelModules = await (Module as any)['findByDifficulty'](nextDifficulty);
       return {
         nextModuleId: nextLevelModules[0]?._id.toString(),
         difficultyLevel: nextDifficulty
@@ -219,7 +224,7 @@ export class AdaptiveService {
     const recommendedModule = this.selectBestModule(uncompletedModules, userProfile);
     
     // Find associated quiz if available
-    const quiz = await Quiz.findByModule(recommendedModule._id.toString());
+    const quiz = await (Quiz as any)['findByModule'](recommendedModule._id.toString());
     
     return {
       nextModuleId: recommendedModule._id.toString(),
@@ -293,7 +298,7 @@ export class AdaptiveService {
    * Get entry-level recommendation for new users
    */
   private static async getEntryLevelRecommendation(): Promise<IAdaptiveRecommendation> {
-    const entryModules = await Module.findEntryLevel();
+    const entryModules = await (Module as any)['findEntryLevel']();
     const firstModule = entryModules[0];
     
     return {

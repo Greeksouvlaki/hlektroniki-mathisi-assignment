@@ -1,8 +1,15 @@
 import mongoose, { Schema, Document } from 'mongoose';
 import bcrypt from 'bcryptjs';
-import { IUser, UserRole } from '../types/index.js';
+import { UserRole } from '../types/index.js';
 
-export interface IUserDocument extends IUser, Document {
+export interface IUserDocument extends Document {
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  role: UserRole;
+  isActive: boolean;
+  lastLogin?: Date;
   comparePassword(candidatePassword: string): Promise<boolean>;
   toJSON(): any;
 }
@@ -72,7 +79,7 @@ userSchema.pre('save', async function(next) {
 
   try {
     // Hash password with cost of 12
-    const saltRounds = parseInt(process.env.BCRYPT_ROUNDS || '12');
+    const saltRounds = parseInt(((process.env as any)['BCRYPT_ROUNDS'] as string) || '12');
     this.password = await bcrypt.hash(this.password, saltRounds);
     next();
   } catch (error) {
@@ -89,33 +96,33 @@ userSchema.pre('save', function(next) {
 });
 
 // Instance method to compare password
-userSchema.methods.comparePassword = async function(candidatePassword: string): Promise<boolean> {
+;(userSchema as any).methods['comparePassword'] = async function(candidatePassword: string): Promise<boolean> {
   try {
-    return await bcrypt.compare(candidatePassword, this.password);
+    return await bcrypt.compare(candidatePassword, (this as any).password);
   } catch (error) {
     throw new Error('Password comparison failed');
   }
 };
 
 // Override toJSON to exclude password
-userSchema.methods.toJSON = function() {
+;(userSchema as any).methods['toJSON'] = function() {
   const userObject = this.toObject();
   delete userObject.password;
   return userObject;
 };
 
 // Static method to find user by email
-userSchema.statics.findByEmail = function(email: string) {
+;(userSchema as any).statics['findByEmail'] = function(email: string) {
   return this.findOne({ email: email.toLowerCase() }).select('+password');
 };
 
 // Static method to find active users
-userSchema.statics.findActive = function() {
+;(userSchema as any).statics['findActive'] = function() {
   return this.find({ isActive: true });
 };
 
 // Static method to find users by role
-userSchema.statics.findByRole = function(role: UserRole) {
+;(userSchema as any).statics['findByRole'] = function(role: UserRole) {
   return this.find({ role, isActive: true });
 };
 

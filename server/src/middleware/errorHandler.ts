@@ -68,7 +68,7 @@ export const errorHandler = (
   res.status(statusCode).json({
     success: false,
     error: message,
-    ...(process.env.NODE_ENV === 'development' && {
+    ...((((process.env as any)['NODE_ENV'] as string) === 'development') && {
       stack: error.stack,
       details: error.message
     }),

@@ -198,7 +198,7 @@ const sampleQuizzes = [
 async function seedQuizzes() {
   try {
     // Connect to MongoDB
-    await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/adaptive-learning');
+    await mongoose.connect(((process.env as any)['MONGODB_URI'] as string) || 'mongodb://localhost:27017/adaptive-learning');
     console.log('Connected to MongoDB');
 
     // Clear existing quizzes

@@ -58,11 +58,11 @@ const Navbar = () => {
                   >
                     <div className="h-8 w-8 bg-primary-100 rounded-full flex items-center justify-center">
                       <span className="text-primary-600 font-medium text-sm">
-                        {user.name?.charAt(0) || 'U'}
+                        {(user.firstName || user.email)?.charAt(0) || 'U'}
                       </span>
                     </div>
                     <span className="hidden md:block text-sm font-medium">
-                      {user.name || user.email}
+                      {user.firstName ? `${user.firstName} ${user.lastName}` : user.email}
                     </span>
                   </button>
 

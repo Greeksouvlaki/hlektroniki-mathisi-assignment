@@ -9,7 +9,7 @@ dotenv.config();
 
 const seedProgress = async () => {
   try {
-    const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/adaptive_elearning';
+    const mongoURI = ((process.env as any)['MONGODB_URI'] as string) || 'mongodb://localhost:27017/adaptive_elearning';
     await mongoose.connect(mongoURI);
     console.log('Connected to MongoDB');
 
@@ -37,8 +37,8 @@ const seedProgress = async () => {
       // Completed quiz
       {
         userId: user._id,
-        moduleId: modules[0]._id,
-        quizId: quizzes[0]._id,
+        moduleId: modules[0]!._id,
+        quizId: quizzes[0]!._id,
         score: 85,
         maxScore: 100,
         percentage: 85,
@@ -71,7 +71,7 @@ const seedProgress = async () => {
       // Completed module
       {
         userId: user._id,
-        moduleId: modules[0]._id,
+        moduleId: modules[0]!._id,
         score: 90,
         maxScore: 100,
         percentage: 90,
@@ -89,8 +89,8 @@ const seedProgress = async () => {
       // Another completed quiz
       {
         userId: user._id,
-        moduleId: modules[1]._id,
-        quizId: quizzes[1]._id,
+        moduleId: modules[1]!._id,
+        quizId: quizzes[1]!._id,
         score: 92,
         maxScore: 100,
         percentage: 92,
@@ -126,13 +126,13 @@ const seedProgress = async () => {
     console.log(`Created ${progressData.length} progress records for user ${user.email}`);
 
     // Calculate and display stats
-    const userProgress = await Progress.find({ userId: user._id });
-    const totalTimeSpent = userProgress.reduce((sum, p) => sum + (p.timeSpent || 0), 0);
-    const quizzesCompleted = userProgress.filter(p => p.quizId).length;
-    const modulesCompleted = userProgress.filter(p => p.moduleId && !p.quizId).length;
-    const completedQuizzes = userProgress.filter(p => p.quizId && p.score !== undefined);
+    const userProgress = await Progress.find({ userId: user._id }) as any[];
+    const totalTimeSpent = userProgress.reduce((sum, p) => sum + ((p as any).timeSpent || 0), 0);
+    const quizzesCompleted = userProgress.filter(p => (p as any).quizId).length;
+    const modulesCompleted = userProgress.filter(p => (p as any).moduleId && !(p as any).quizId).length;
+    const completedQuizzes = userProgress.filter(p => (p as any).quizId && (p as any).score !== undefined);
     const averageScore = completedQuizzes.length > 0 
-      ? Math.round(completedQuizzes.reduce((sum, p) => sum + (p.percentage || 0), 0) / completedQuizzes.length)
+      ? Math.round(completedQuizzes.reduce((sum, p) => sum + ((p as any).percentage || 0), 0) / completedQuizzes.length)
       : 0;
 
     console.log('\nProgress Statistics:');

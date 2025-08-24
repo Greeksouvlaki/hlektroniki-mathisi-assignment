@@ -1,0 +1,74 @@
+[
+  {
+    "id": "htmlcss-mod1",
+    "title": "Introduction to HTML",
+    "description": "Learn the essentials of HTML: how pages are structured, common elements, links, and best practices for clean, semantic markup.",
+    "content": [
+      { "heading": "What is HTML?", "body": "HTML (HyperText Markup Language) is the standard language for structuring content on the web. It uses elements (tags) to describe headings, paragraphs, images, links, and more." },
+      { "heading": "Document Structure", "body": "A basic page includes <!doctype html>, <html>, <head>, and <body>. The <head> holds metadata like <title> and <meta>. The <body> contains visible content." },
+      { "heading": "Common Elements", "body": "Frequent tags include <h1>–<h6> for headings, <p> for paragraphs, <a> for links, <img> for images, <ul>/<ol>/<li> for lists, and <div>/<span> for generic containers." },
+      { "heading": "Links and Attributes", "body": "Use the <a> tag with the href attribute to create links. Attributes provide extra information (e.g., target=\"_blank\" to open in a new tab)." },
+      { "heading": "Semantic HTML Basics", "body": "Semantic elements like <header>, <nav>, <main>, <article>, and <footer> convey meaning, improving accessibility, SEO, and maintainability." }
+    ],
+    "resources": [
+      "https://developer.mozilla.org/en-US/docs/Web/HTML",
+      "https://web.dev/learn/html/"
+    ],
+    "difficultyLevel": 1
+  },
+  {
+    "id": "htmlcss-mod2",
+    "title": "CSS Fundamentals",
+    "description": "Style web pages with CSS. Learn selectors, the box model, typography, and how to organize styles for maintainable code.",
+    "content": [
+      { "heading": "What is CSS?", "body": "CSS (Cascading Style Sheets) controls the presentation of HTML. You can set colors, spacing, layout, and animations." },
+      { "heading": "Selectors & Specificity", "body": "Selectors target elements (e.g., element, class, id). Specificity determines which rule wins when multiple rules apply." },
+      { "heading": "The Box Model", "body": "Every element is a box with content, padding, border, and margin. The box model affects layout and spacing." },
+      { "heading": "Colors & Typography", "body": "Use color, background-color, font-family, font-size, and line-height. Prefer web-safe fonts or host custom fonts responsibly." },
+      { "heading": "Organizing Styles", "body": "External stylesheets (<link>) keep CSS separate from HTML. Group related styles, and consider utility classes for consistency." }
+    ],
+    "resources": [
+      "https://developer.mozilla.org/en-US/docs/Web/CSS",
+      "https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors",
+      "https://specificity.keegan.st/"
+    ],
+    "difficultyLevel": 1
+  },
+  {
+    "id": "htmlcss-mod3",
+    "title": "Layout with Flexbox and Grid",
+    "description": "Build modern, responsive layouts using Flexbox for one‑dimensional alignment and CSS Grid for two‑dimensional structures.",
+    "content": [
+      { "heading": "Flow & Display", "body": "The normal flow lays elements top-to-bottom. Change layout behavior using display: flex or display: grid when needed." },
+      { "heading": "Flexbox Essentials", "body": "Flexbox aligns items along a main axis and cross axis. Key properties: justify-content, align-items, and flex for sizing." },
+      { "heading": "Common Flex Patterns", "body": "Create nav bars, centered content, and equal-height columns with minimal code using Flexbox utilities." },
+      { "heading": "CSS Grid Basics", "body": "Grid defines rows and columns. Use grid-template-columns/rows, gap, and place items precisely for complex layouts." },
+      { "heading": "Combining Tools", "body": "Use Flexbox inside Grid (or vice versa) to simplify component-level alignment within larger page layouts." }
+    ],
+    "resources": [
+      "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout",
+      "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout"
+    ],
+    "difficultyLevel": 2
+  },
+  {
+    "id": "htmlcss-mod4",
+    "title": "Responsive Design & Accessibility",
+    "description": "Make pages look great on any device and accessible to all users. Learn media queries, fluid units, and core a11y practices.",
+    "content": [
+      { "heading": "Viewport & Media Queries", "body": "Add a responsive viewport meta tag. Use @media queries (e.g., max-width) to adapt layouts at breakpoints." },
+      { "heading": "Fluid Units & Images", "body": "Use relative units (%, em, rem, vw/vh) for scalable typography and spacing. Make images responsive with max-width: 100%." },
+      { "heading": "Mobile-first Strategy", "body": "Design for small screens first, then enhance with larger layouts. This keeps CSS simpler and more robust." },
+      { "heading": "Accessibility Essentials", "body": "Use semantic HTML, alt text, proper labels, color contrast, and keyboard navigation. Prefer native elements over ARIA when possible." },
+      { "heading": "Testing & Tooling", "body": "Use browser DevTools, Lighthouse, and screen readers to audit performance and accessibility." }
+    ],
+    "resources": [
+      "https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design",
+      "https://www.w3.org/WAI/fundamentals/accessibility-intro/",
+      "https://web.dev/learn/design/"
+    ],
+    "difficultyLevel": 3
+  }
+]
+
+

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import jwt from 'jsonwebtoken';
+import jwt, { Secret } from 'jsonwebtoken';
 import { User } from '../models/User.js';
 import { AuthenticatedRequest, JwtPayload, AppError } from '../types/index.js';
 
@@ -22,7 +22,7 @@ export const authenticateToken = async (
       throw error;
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as JwtPayload;
+    const decoded = jwt.verify(token, ((process.env as any)['JWT_SECRET'] as Secret)) as JwtPayload;
     
     // Find user and attach to request
     const user = await User.findById(decoded.userId).select('-password');
@@ -40,8 +40,8 @@ export const authenticateToken = async (
       throw error;
     }
 
-    req.user = user;
-    req.userId = user._id.toString();
+    req.user = user as any;
+    req.userId = (user._id as any).toString();
     next();
   } catch (error) {
     if (error instanceof jwt.JsonWebTokenError) {
@@ -76,12 +76,12 @@ export const optionalAuth = async (
       return next();
     }
 
-    const decoded = jwt.verify(token, process.env.JWT_SECRET!) as JwtPayload;
+    const decoded = jwt.verify(token, ((process.env as any)['JWT_SECRET'] as Secret)) as JwtPayload;
     const user = await User.findById(decoded.userId).select('-password');
     
     if (user && user.isActive) {
-      req.user = user;
-      req.userId = user._id.toString();
+      req.user = user as any;
+      req.userId = (user._id as any).toString();
     }
     
     next();
@@ -147,7 +147,7 @@ export const verifyRefreshToken = async (
       throw error;
     }
 
-    const decoded = jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET!) as JwtPayload;
+    const decoded = jwt.verify(refreshToken, ((process.env as any)['JWT_REFRESH_SECRET'] as Secret)) as JwtPayload;
     
     const user = await User.findById(decoded.userId).select('-password');
     if (!user || !user.isActive) {
@@ -157,7 +157,7 @@ export const verifyRefreshToken = async (
       throw error;
     }
 
-    req.body.userId = user._id.toString();
+    req.body.userId = (user._id as any).toString();
     next();
   } catch (error) {
     if (error instanceof jwt.JsonWebTokenError) {

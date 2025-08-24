@@ -12,7 +12,7 @@ interface RegisterFormData {
   email: string;
   password: string;
   confirmPassword: string;
-  role: 'student' | 'instructor';
+  role: 'student' | 'teacher';
 }
 
 export default function RegisterPage() {
@@ -52,8 +52,8 @@ export default function RegisterPage() {
         // Transform user data to match frontend interface
         const user = {
           ...response.data.user,
-          id: response.data.user._id // Convert _id to id
-        };
+          id: response.data.user._id || response.data.user.id
+        } as any;
         
         // Update auth store
         login(user, response.data.tokens);
@@ -210,7 +210,7 @@ export default function RegisterPage() {
               >
                 <option value="">Select your role</option>
                 <option value="student">Student</option>
-                <option value="instructor">Instructor</option>
+                <option value="teacher">Teacher</option>
               </select>
               {errors.role && (
                 <p className="mt-1 text-sm text-red-600">{errors.role.message}</p>

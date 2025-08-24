@@ -1,3 +1,5 @@
+import type { Request } from 'express';
+
 // User Types
 export interface IUser {
   _id: string;

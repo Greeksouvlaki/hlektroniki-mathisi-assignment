@@ -1,14 +1,10 @@
 import mongoose, { Schema, Document } from 'mongoose';
-import { IProgress, IResponse, IAdaptiveData } from '../types/index.js';
 
-export interface IProgressDocument extends IProgress, Document {}
+export interface IProgressDocument extends Document {}
 
-const responseSchema = new Schema<IResponse>(
+const responseSchema = new Schema(
   {
-    questionId: {
-      type: Schema.Types.ObjectId,
-      required: [true, 'Question ID is required']
-    },
+    questionId: { type: Schema.Types.ObjectId, required: [true, 'Question ID is required'] },
     userAnswer: {
       type: Schema.Types.Mixed, // Can be string or array of strings
       required: [true, 'User answer is required']
@@ -31,7 +27,7 @@ const responseSchema = new Schema<IResponse>(
   { _id: true }
 );
 
-const adaptiveDataSchema = new Schema<IAdaptiveData>(
+const adaptiveDataSchema = new Schema(
   {
     difficultyLevel: {
       type: String,
@@ -62,22 +58,11 @@ const adaptiveDataSchema = new Schema<IAdaptiveData>(
   { _id: false }
 );
 
-const progressSchema = new Schema<IProgressDocument>(
+const progressSchema = new Schema(
   {
-    userId: {
-      type: Schema.Types.ObjectId,
-      ref: 'User',
-      required: [true, 'User ID is required']
-    },
-    moduleId: {
-      type: Schema.Types.ObjectId,
-      ref: 'Module',
-      required: [true, 'Module ID is required']
-    },
-    quizId: {
-      type: Schema.Types.ObjectId,
-      ref: 'Quiz'
-    },
+    userId: { type: Schema.Types.ObjectId, ref: 'User', required: [true, 'User ID is required'] },
+    moduleId: { type: Schema.Types.ObjectId, ref: 'Module', required: [true, 'Module ID is required'] },
+    quizId: { type: Schema.Types.ObjectId, ref: 'Quiz' },
     score: {
       type: Number,
       required: [true, 'Score is required'],
@@ -121,14 +106,16 @@ const progressSchema = new Schema<IProgressDocument>(
 
 // Virtual for pass/fail status
 progressSchema.virtual('isPassed').get(function() {
-  return this.percentage >= 70; // 70% passing threshold
+  const self = this as any;
+  return (self.percentage || 0) >= 70; // 70% passing threshold
 });
 
 // Virtual for performance level
 progressSchema.virtual('performanceLevel').get(function() {
-  if (this.percentage >= 90) return 'excellent';
-  if (this.percentage >= 80) return 'good';
-  if (this.percentage >= 70) return 'satisfactory';
+  const self = this as any;
+  if ((self.percentage || 0) >= 90) return 'excellent';
+  if ((self.percentage || 0) >= 80) return 'good';
+  if ((self.percentage || 0) >= 70) return 'satisfactory';
   return 'needs-improvement';
 });
 
@@ -145,14 +132,15 @@ progressSchema.index({ userId: 1, moduleId: 1, completedAt: -1 });
 
 // Pre-save middleware to calculate percentage
 progressSchema.pre('save', function(next) {
-  if (this.isModified('score') || this.isModified('maxScore')) {
-    this.percentage = Math.round((this.score / this.maxScore) * 100);
+  const self = this as any;
+  if (self.isModified('score') || self.isModified('maxScore')) {
+    self.percentage = Math.round(((self.score || 0) / (self.maxScore || 1)) * 100);
   }
   next();
 });
 
 // Static method to find user progress
-progressSchema.statics.findByUser = function(userId: string) {
+progressSchema.statics['findByUser'] = function(userId: string) {
   return this.find({ userId })
     .populate('moduleId', 'title subject difficulty')
     .populate('quizId', 'title')
@@ -160,7 +148,7 @@ progressSchema.statics.findByUser = function(userId: string) {
 };
 
 // Static method to find module progress
-progressSchema.statics.findByModule = function(moduleId: string) {
+progressSchema.statics['findByModule'] = function(moduleId: string) {
   return this.find({ moduleId })
     .populate('userId', 'firstName lastName email')
     .populate('quizId', 'title')
@@ -168,7 +156,7 @@ progressSchema.statics.findByModule = function(moduleId: string) {
 };
 
 // Static method to find recent progress
-progressSchema.statics.findRecent = function(userId: string, limit = 10) {
+progressSchema.statics['findRecent'] = function(userId: string, limit = 10) {
   return this.find({ userId })
     .populate('moduleId', 'title subject')
     .populate('quizId', 'title')
@@ -177,7 +165,7 @@ progressSchema.statics.findRecent = function(userId: string, limit = 10) {
 };
 
 // Static method to calculate user statistics
-progressSchema.statics.getUserStats = function(userId: string) {
+progressSchema.statics['getUserStats'] = function(userId: string) {
   return this.aggregate([
     { $match: { userId: new mongoose.Types.ObjectId(userId) } },
     {

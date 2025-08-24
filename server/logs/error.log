@@ -10,3 +10,80 @@
 2025-07-06 23:03:43:343 [31merror[39m: [31mUncaught Exception: listen EADDRINUSE: address already in use :::3000[39m
 2025-07-06 23:15:18:1518 [31merror[39m: [31mUncaught Exception: write EIO[39m
 2025-07-06 23:34:50:3450 [31merror[39m: [31mUnhandled Promise Rejection: Connection.prototype.close() no longer accepts a callback[39m
+2025-08-13 17:26:31:2631 [31merror[39m: [31m500 - Internal Server Error - /api/adaptive/recommendations - GET - ::1 - Error: Failed to generate adaptive recommendation[39m
+[31m    at AdaptiveService.getAdaptiveRecommendation (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/services/adaptiveService.ts:56:13)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async <anonymous> (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/routes/adaptive.ts:21:15)[39m
+2025-08-13 17:26:31:2631 [31merror[39m: [31m500 - Internal Server Error - /api/adaptive/recommendations - GET - ::1 - Error: Failed to generate adaptive recommendation[39m
+[31m    at AdaptiveService.getAdaptiveRecommendation (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/services/adaptiveService.ts:56:13)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async <anonymous> (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/routes/adaptive.ts:21:15)[39m
+2025-08-13 17:26:35:2635 [31merror[39m: [31m500 - Internal Server Error - /api/adaptive/recommendations - GET - ::1 - Error: Failed to generate adaptive recommendation[39m
+[31m    at AdaptiveService.getAdaptiveRecommendation (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/services/adaptiveService.ts:56:13)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async <anonymous> (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/routes/adaptive.ts:21:15)[39m
+2025-08-13 17:26:35:2635 [31merror[39m: [31m500 - Internal Server Error - /api/adaptive/recommendations - GET - ::1 - Error: Failed to generate adaptive recommendation[39m
+[31m    at AdaptiveService.getAdaptiveRecommendation (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/services/adaptiveService.ts:56:13)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async <anonymous> (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/routes/adaptive.ts:21:15)[39m
+2025-08-13 17:26:45:2645 [31merror[39m: [31m500 - Internal Server Error - /api/adaptive/recommendations - GET - ::1 - Error: Failed to generate adaptive recommendation[39m
+[31m    at AdaptiveService.getAdaptiveRecommendation (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/services/adaptiveService.ts:56:13)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async <anonymous> (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/routes/adaptive.ts:21:15)[39m
+2025-08-13 17:26:45:2645 [31merror[39m: [31m500 - Internal Server Error - /api/adaptive/recommendations - GET - ::1 - Error: Failed to generate adaptive recommendation[39m
+[31m    at AdaptiveService.getAdaptiveRecommendation (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/services/adaptiveService.ts:56:13)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async <anonymous> (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/routes/adaptive.ts:21:15)[39m
+2025-08-13 17:26:49:2649 [31merror[39m: [31m500 - Internal Server Error - /api/adaptive/recommendations - GET - ::1 - Error: Failed to generate adaptive recommendation[39m
+[31m    at AdaptiveService.getAdaptiveRecommendation (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/services/adaptiveService.ts:56:13)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async <anonymous> (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/routes/adaptive.ts:21:15)[39m
+2025-08-13 17:26:49:2649 [31merror[39m: [31m500 - Internal Server Error - /api/adaptive/recommendations - GET - ::1 - Error: Failed to generate adaptive recommendation[39m
+[31m    at AdaptiveService.getAdaptiveRecommendation (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/services/adaptiveService.ts:56:13)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async <anonymous> (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/routes/adaptive.ts:21:15)[39m
+2025-08-13 17:26:52:2652 [31merror[39m: [31m500 - Internal Server Error - /api/adaptive/recommendations - GET - ::1 - Error: Failed to generate adaptive recommendation[39m
+[31m    at AdaptiveService.getAdaptiveRecommendation (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/services/adaptiveService.ts:56:13)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async <anonymous> (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/routes/adaptive.ts:21:15)[39m
+2025-08-13 17:26:52:2652 [31merror[39m: [31m500 - Internal Server Error - /api/adaptive/recommendations - GET - ::1 - Error: Failed to generate adaptive recommendation[39m
+[31m    at AdaptiveService.getAdaptiveRecommendation (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/services/adaptiveService.ts:56:13)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async <anonymous> (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/routes/adaptive.ts:21:15)[39m
+2025-08-13 17:27:31:2731 [31merror[39m: [31m500 - Internal Server Error - /api/adaptive/recommendations - GET - ::1 - Error: Failed to generate adaptive recommendation[39m
+[31m    at AdaptiveService.getAdaptiveRecommendation (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/services/adaptiveService.ts:56:13)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async <anonymous> (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/routes/adaptive.ts:21:15)[39m
+2025-08-13 17:27:31:2731 [31merror[39m: [31m500 - Internal Server Error - /api/adaptive/recommendations - GET - ::1 - Error: Failed to generate adaptive recommendation[39m
+[31m    at AdaptiveService.getAdaptiveRecommendation (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/services/adaptiveService.ts:56:13)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async <anonymous> (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/routes/adaptive.ts:21:15)[39m
+2025-08-13 17:27:39:2739 [31merror[39m: [31m500 - Internal Server Error - /api/adaptive/recommendations - GET - ::1 - Error: Failed to generate adaptive recommendation[39m
+[31m    at AdaptiveService.getAdaptiveRecommendation (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/services/adaptiveService.ts:56:13)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async <anonymous> (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/routes/adaptive.ts:21:15)[39m
+2025-08-13 17:27:39:2739 [31merror[39m: [31m500 - Internal Server Error - /api/adaptive/recommendations - GET - ::1 - Error: Failed to generate adaptive recommendation[39m
+[31m    at AdaptiveService.getAdaptiveRecommendation (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/services/adaptiveService.ts:56:13)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+[31m    at async <anonymous> (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/routes/adaptive.ts:21:15)[39m
+2025-08-22 12:11:57:1157 [31merror[39m: [31mMongoDB connection error: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017[39m
+2025-08-22 18:07:26:726 [31merror[39m: [31mMongoDB connection error: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017[39m
+2025-08-22 18:08:10:810 [31merror[39m: [31mMongoDB connection error: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017[39m
+2025-08-22 18:38:08:388 [31merror[39m: [31mMongoDB connection error: querySrv ENOTFOUND _mongodb._tcp.cluster0.mongodb.net[39m
+2025-08-22 18:43:45:4345 [31merror[39m: [31mMongoDB connection error: querySrv ENOTFOUND _mongodb._tcp.cluster0.mongodb.net[39m
+2025-08-22 18:45:40:4540 [31merror[39m: [31m500 - Internal Server Error - /api/auth/login - POST - ::1 - Error: secretOrPrivateKey must have a value[39m
+[31m    at module.exports [as sign] (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/node_modules/jsonwebtoken/sign.js:111:20)[39m
+[31m    at generateTokens (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/controllers/authController.ts:48:27)[39m
+[31m    at login (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/controllers/authController.ts:220:20)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+2025-08-22 18:45:56:4556 [31merror[39m: [31m500 - Internal Server Error - /api/auth/login - POST - ::1 - Error: secretOrPrivateKey must have a value[39m
+[31m    at module.exports [as sign] (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/node_modules/jsonwebtoken/sign.js:111:20)[39m
+[31m    at generateTokens (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/controllers/authController.ts:48:27)[39m
+[31m    at login (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/controllers/authController.ts:220:20)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+2025-08-22 18:46:53:4653 [31merror[39m: [31m500 - Internal Server Error - /api/auth/login - POST - ::1 - Error: secretOrPrivateKey must have a value[39m
+[31m    at module.exports [as sign] (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/node_modules/jsonwebtoken/sign.js:111:20)[39m
+[31m    at generateTokens (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/controllers/authController.ts:48:27)[39m
+[31m    at login (/Users/ijmskoufis/Documents/Ηλεκτρονική Μάθηση/server/src/controllers/authController.ts:220:20)[39m
+[31m    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)[39m
+2025-08-22 18:47:56:4756 [31merror[39m: [31mMongoDB connection error: querySrv ENOTFOUND _mongodb._tcp.cluster0.mongodb.net[39m
